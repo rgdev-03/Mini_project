@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Landing } from './pages/Landing/Landing';
 import { About } from './pages/About/About';
-import {Navbar} from './pages/Navbar/Navbar'
-import { Staff } from './pages/Staff';
-import {Staffadd} from './pages/Staffadd';
+import {Navbar} from './components/Navbar/Navbar'
+import { Staff } from './pages/staff/Staff';
+import {Staffadd} from './pages/staff/Staffadd';
 const router = createBrowserRouter([
   {
     path: '/',

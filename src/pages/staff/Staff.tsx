@@ -1,5 +1,5 @@
 
-import { Navbar, } from '@/pages/Navbar/Navbar';
+import { Navbar, } from '@/components/Navbar/Navbar';
 import { AppShell, Group} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Grid,} from '@mantine/core';
@@ -17,8 +17,6 @@ const elements = [
     { position: 58,  name: 'Cerium',mass:'hbhehdb' },
     { position: 58,  name: 'Cerium',mass:'hbhehdb' },
     { position: 58,  name: 'Cerium',mass:'hbhehdb' },
-
-
   ];
 
 const rows = elements.map((element) => (
@@ -46,8 +44,7 @@ export function Staff() {
             <Grid>
             <Group mt={60} ml={1000}>
             <Link to="/staffadd">
-            <Button variant="filled" color="rgba(176, 176, 176, 0.75)" size="md" radius="md"  c="Black">+ Add Staff
-            </Button>
+            <Button variant="filled" color="rgba(176, 176, 176, 0.75)" size="md" radius="md"  c="Black">+ Add Staff</Button>
             </Link>
             </Group>
              </Grid>
