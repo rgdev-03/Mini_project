@@ -1,5 +1,6 @@
 import { AppShell, Avatar, Group ,Text,UnstyledButton,Title} from '@mantine/core';
 import classes from './Header.module.css'
+import { Link } from 'react-router-dom';
 // Height is an object with breakpoints:
 // - height is 48 when viewport width is < theme.breakpoints.sm
 // - height is 60 when viewport width is >= theme.breakpoints.sm and < theme.breakpoints.lg
