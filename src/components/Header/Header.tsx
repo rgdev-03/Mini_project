@@ -4,6 +4,7 @@ import classes from './Header.module.css'
 // - height is 48 when viewport width is < theme.breakpoints.sm
 // - height is 60 when viewport width is >= theme.breakpoints.sm and < theme.breakpoints.lg
 // - height is 76 when viewport width is >= theme.breakpoints.lg
+import { Link } from 'react-router-dom';
 export function Header() {
   return (
     <AppShell header={{ height: { base: 50, sm: 50, lg: 60 } }}>
@@ -13,8 +14,8 @@ export function Header() {
         <Group justify="space-between">
         <Title pt="xs" order={4}>RYMEC PMS</Title>
           <Group justify="right">
-          <UnstyledButton className={classes.control}>Home</UnstyledButton>
-          <UnstyledButton className={classes.control}>About Us</UnstyledButton>
+         <Link to="/"><UnstyledButton className={classes.control}>Home</UnstyledButton></Link>
+          <Link to="/about"><UnstyledButton className={classes.control}>About Us</UnstyledButton></Link>
           <UnstyledButton className={classes.control}>Student</UnstyledButton>
           <UnstyledButton className={classes.control}>Faculty</UnstyledButton>
           <UnstyledButton className={classes.control}>HR</UnstyledButton>
