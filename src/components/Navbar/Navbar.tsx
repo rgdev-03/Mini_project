@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Group, Code,NavLink,Text } from '@mantine/core';
 import {
   IconLayoutDashboard,
@@ -15,14 +14,11 @@ import { Link } from 'react-router-dom';
 
 
 export function Navbar() {
-
-
-
   return (
     <nav className={classes.navbar}>
       <div className={classes.navbarMain}>
         <Text className={classes.name}>Mini-Project</Text>
-        <Link to="/">
+        <Link to="/homepage">
         <NavLink
         label="Dashboard"
         className={classes.link}

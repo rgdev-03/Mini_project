@@ -6,7 +6,17 @@ import { Staff } from './pages/staff/Staff';
 import {Staffadd} from './pages/staff/Staffadd';
 import { Students } from './pages/Students';
 import {Academics} from './pages/Academics';
+import {HomePage} from './pages/Home.page';
+import { Login } from './components/Login/Welcome';
 const router = createBrowserRouter([
+  {
+    path: '/homepage',
+    element: <HomePage />,
+  },
+  {
+    path:'/login',
+    element:<Login/>,
+  },
   {
     path: '/',
     element: <Landing />,
