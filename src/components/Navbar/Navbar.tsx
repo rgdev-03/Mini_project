@@ -37,7 +37,7 @@ export function Navbar() {
     
       />
       </Link>
-      <Link to="#">
+      <Link to="/students">
         <NavLink
         leftSection={<IconMan/>}
         label="Students"
@@ -53,7 +53,7 @@ export function Navbar() {
     
       />
       </Link>
-      <Link to="#">
+      <Link to="/academics">
         <NavLink
         leftSection={<IconNotebook/>}
         label="Academics"

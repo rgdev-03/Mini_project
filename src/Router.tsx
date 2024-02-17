@@ -4,6 +4,8 @@ import { About } from './pages/About/About';
 import {Navbar} from './components/Navbar/Navbar'
 import { Staff } from './pages/staff/Staff';
 import {Staffadd} from './pages/staff/Staffadd';
+import { Students } from './pages/Students';
+import {Academics} from './pages/Academics';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -25,7 +27,14 @@ const router = createBrowserRouter([
     path: '/staffadd',
     element: <Staffadd/>,
   },
-
+  {
+    path: '/students',
+    element: <Students/>,
+  },
+  {
+    path: '/academics',
+    element: <Academics/>,
+  },
 ]);
 
 export function Router() {

@@ -4,6 +4,7 @@ import classes from './home.module.css'
 import { Header } from '@/components/Header/Header';
 import Carrousel from '@/components/carsouel/carousel';
 import {slides} from '../../data/carrsouel.json'
+import { Link } from 'react-router-dom';
 
 export function Landing() {
   const [opened, { toggle }] = useDisclosure();

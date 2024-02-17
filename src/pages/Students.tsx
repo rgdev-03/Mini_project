@@ -1,10 +1,9 @@
-
-import { Navbar, } from '@/components/Navbar/Navbar';
-import { AppShell, Group} from '@mantine/core';
+import { Navbar } from '@/components/Navbar/Navbar';
+import { AppShell, Grid} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { Grid,} from '@mantine/core';
+import { NativeSelect } from '@mantine/core';
 import { Button } from '@mantine/core';
-import { Table } from '@mantine/core';
+import { Table} from '@mantine/core';
 import { Link } from 'react-router-dom';
 
 const elements = [
@@ -27,39 +26,51 @@ const rows = elements.map((element) => (
     </Table.Tr>
   ));
 
-export function Staff() {
+export function Students() {
   const [opened] = useDisclosure();
- 
   return (
     <AppShell
       navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}
       padding="md"
     >
-      
+
       <AppShell.Navbar >
         <Navbar/>
       </AppShell.Navbar>
 
       <AppShell.Main>
-            <Grid>
-            <Group mt={60} ml={1000}>
-            <Link to="/staffadd">
-            <Button variant="filled" color="blue" size="lg" radius="lg">+ Add Staff</Button>
-            </Link>
-            </Group>
-             </Grid>
 
-      <Table ml="10px" mt="100px" borderColor='black' withTableBorder withRowBorders={false}>
+        <Grid>
+      <Grid.Col span={4}>
+      <NativeSelect variant="filled" size="lg" w="300px" radius="lg" mt="40px" label="Name:" ml={20} data={['Sem', 'Angular', 'Vue']}/>       
+      </Grid.Col>
+
+      <Grid.Col span={4}>
+      <NativeSelect variant="filled" size="lg" w="300px" radius="lg" mt="40px" label="Branch:" ml={20} data={['Batch', 'Angular', 'Vue']}/>       
+      </Grid.Col>
+
+      <Grid.Col span={3}>
+      <NativeSelect variant="filled" size="lg" w="300px" radius="lg" mt="40px" label="Department:" ml={20} data={['Branch', 'Angular', 'Vue']}/>       
+      </Grid.Col>
+
+      <Grid.Col span={3}>
+      <Button variant="filled" color="blue" size="lg" radius="lg"  ml={1030} mt={20}>Export</Button>
+      </Grid.Col> 
+            
+    </Grid>
+     
+    <Table ml="5px" mt="50px" borderColor='black'  withTableBorder withRowBorders={false}>
       <Table.Thead>
         <Table.Tr >
-          <Table.Th>Staff id</Table.Th>
-          <Table.Th>Staff name</Table.Th>
+          <Table.Th>Sem</Table.Th>
+          <Table.Th>Batch</Table.Th>
           <Table.Th>Branch</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
     </Table>
       </AppShell.Main>
+     
     </AppShell>
   );
 }

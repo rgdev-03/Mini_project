@@ -1,5 +1,5 @@
 .navbar {
-    height: rem(775px);
+    height: rem(770px);
     width: rem(300px);
     margin: 8px 8px 0 ;
     border-radius: 10px;
@@ -10,6 +10,7 @@
     align-content: center;
     justify-content: center;
     padding: 10px;
+    margin-top: 10px;
   }
   
   .navbarMain {
@@ -20,12 +21,8 @@
     padding: 15px;
     font-weight: bold;
     font-size: 16px;
+    }
 
-  }
-
-  
- 
-  
   .link {
     display: flex;
     align-items: center;

@@ -2,8 +2,6 @@ import { Navbar } from '@/components/Navbar/Navbar';
 import { AppShell, Grid} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { NativeSelect } from '@mantine/core';
-import { Link } from 'react-router-dom';
-import { Group } from '@mantine/core';
 import { Button } from '@mantine/core';
 
 export function Staffadd() {
@@ -32,7 +30,11 @@ export function Staffadd() {
       <Grid.Col span={3}>
       <NativeSelect variant="filled" size="lg" w="300px" radius="lg" mt="40px" label="Department:" ml={20} data={['Department', 'Angular', 'Vue']}/>       
       </Grid.Col>
-    
+
+      <Grid.Col span={3}>
+      <Button variant="filled" color="blue" size="lg" radius="lg"  ml={1030} mt={40}>Submit</Button>
+      </Grid.Col>
+
     </Grid>
       </AppShell.Main>
     </AppShell>
