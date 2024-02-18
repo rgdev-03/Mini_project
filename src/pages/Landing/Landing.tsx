@@ -1,9 +1,11 @@
-import { AppShell, Burger, Group, UnstyledButton,Text,Center,Box,Title,TypographyStylesProvider} from '@mantine/core';
+import { AppShell, Burger, Group, UnstyledButton,Text,Center,Box,Title,TypographyStylesProvider,Container} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './home.module.css'
 import { Header } from '@/components/Header/Header';
 import Carrousel from '@/components/carsouel/carousel';
 import {slides} from '../../data/carrsouel.json'
+import { Link } from 'react-router-dom';
+import { MobNav } from '@/components/MobNav/MobNav';
 
 export function Landing() {
   const [opened, { toggle }] = useDisclosure();
@@ -32,21 +34,17 @@ export function Landing() {
       </AppShell.Header>
 
       <AppShell.Navbar py="md" px={4} bg="#676F9D" c="white">
-        <UnstyledButton className={classes.control}>Home</UnstyledButton>
-        <UnstyledButton className={classes.control}>About Us</UnstyledButton>
-        <UnstyledButton className={classes.control}>Student</UnstyledButton>
-        <UnstyledButton className={classes.control}>Faculty</UnstyledButton>
-        <UnstyledButton className={classes.control}>HR</UnstyledButton>
-
+       <MobNav/>
       </AppShell.Navbar>
       <AppShell.Main bg="#2D3250">
      <Carrousel data={slides}/>
-     <Group justify="center" py={50} px={200} c="white">
+     <Container fluid p={50} ta='center' c="WHITE">
      <Title order={3} >ABOUT RYMEC</Title>
      <Text>
      Sri. Rao Bahadur Y. Mahabaleswarappa was born on 3rd June 1906 at Yemmiganur, Ballari (Tq. & Dist). He was the son of Sri Changallappa and Smt. Sugamma. He completed primary and school education at Wardlaw College, Ballari. He Strongly carried froward the message "VIDYA GNENESHA SHOBATHE".
       </Text>
-      </Group>
+    </Container>
+     
       </AppShell.Main>
     </AppShell>
   );

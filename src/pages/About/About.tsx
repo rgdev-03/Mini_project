@@ -1,10 +1,11 @@
-import { AppShell, Burger, Group, UnstyledButton,Text,Center,Box,Title,TypographyStylesProvider,Card, Divider,List, ThemeIcon, rem } from '@mantine/core';
+import { AppShell, Burger, Group, UnstyledButton,Text,Center,Box,Title,TypographyStylesProvider,Card, Divider,List, ThemeIcon, rem,Container} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from '../Landing/home.module.css'
 import { Header } from '@/components/Header/Header';
 import Carrousel from '@/components/carsouel/carousel';
 import {slides} from '../../data/carrsouel.json'
 import { IconCircleCheck, IconCircleDashed } from '@tabler/icons-react';
+import { MobNav } from '@/components/MobNav/MobNav';
 
 export function About() {
   const [opened, { toggle }] = useDisclosure();
@@ -32,16 +33,11 @@ export function About() {
       </AppShell.Header>
 
       <AppShell.Navbar py="md" px={4} bg="#676F9D" c="white">
-        <UnstyledButton className={classes.control}>Home</UnstyledButton>
-        <UnstyledButton className={classes.control}>About Us</UnstyledButton>
-        <UnstyledButton className={classes.control}>Student</UnstyledButton>
-        <UnstyledButton className={classes.control}>Faculty</UnstyledButton>
-        <UnstyledButton className={classes.control}>HR</UnstyledButton>
-
+      <MobNav/>
       </AppShell.Navbar>
       <AppShell.Main bg="#2D3250" >
-        <Group  mx={240} p={20}justify="center" >
-            <Card bg="#676F9D" w="100%" h="100%"  ta="center" radius={10} c="white" >
+      <Container fluid  mx={200} py={20}>
+      <Card bg="#676F9D" w="100%" h="100%"  ta="center" radius={10} c="white" >
             <Title order={2}>About Placement</Title>
             <Divider/>
             <Title c="teal.4" my={10} order={4}>"GOD HAS PROVIDED A JOB FOR EVERY ONE & OUR JOB IS TO GET YOU ON"</Title>
@@ -67,9 +63,24 @@ export function About() {
       <List.Item>Provide fruitful industry-institute interaction.</List.Item>
    
     </List>
-    <Title order={4} my={30}>OBJECTIVES</Title>
-            </Card>
-        </Group>
+    <Title order={4} my={30} c="teal.4">OBJECTIVES</Title>
+    <List type="ordered" ta="left" ml="100"fz="lg">
+      <List.Item>To impart training in skill development, personal grooming and total personality development of students.</List.Item>
+      <List.Item>To organize campus recruitments for maximum placements of students.</List.Item>
+      <List.Item>To arrange different training programs, Such as mock written test, mock group discussion, mock interviews, personality development courses etc.</List.Item>
+      <List.Item>To counsel students in choosing appropriate jobs and institutions for higher education.</List.Item>
+      <List.Item>To conduct personality training programs outside the curricula to provide better placements.</List.Item>
+      <List.Item>To generate and handle the database of industries and students.</List.Item>
+      <List.Item>To provide better industry institute interaction.</List.Item>
+    </List> 
+    <Box> 
+      <Title order={4} c="teal.4">TRAINING & PLACEMENT TEAM</Title>
+      <Text>Placement Director:Gururaj K K</Text>
+      <Text>Asst.Placement Officer: Shivananda K B</Text>
+      </Box>
+      </Card>
+    </Container>
+         
       </AppShell.Main>
     </AppShell>
   );
