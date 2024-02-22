@@ -1,9 +1,9 @@
 import { NavBar } from '@/components/NavBar/NavBar';
-import { AppShell, Burger, Group, Skeleton, Title,Text, Box,Avatar,Card,Table, TableData, Button,Center,TextInput,Container, Grid} from '@mantine/core';
+import { AppShell, Burger, Group, Skeleton, Title,Text, Box,Avatar,Card,Table, TableData, Button,Center,TextInput,Container, Grid,Mark,Dialog} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './student.module.css'
 import React, { useState } from 'react';
-import { Form } from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 export function AddSemMarks() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
@@ -14,6 +14,8 @@ export function AddSemMarks() {
   const updateInput = (id, field, value) => {
     setInputs(inputs.map(input => input.id === id ? { ...input, [field]: value } : input));
   };
+  const [opened, { toggle, close }] = useDisclosure(false);
+
   return (
     <AppShell
       header={{ height: 60 }}
@@ -39,8 +41,9 @@ export function AddSemMarks() {
       
         <Button bg="transparent" style={{border:"2px solid #F8B179"}} onClick={addInputSet}>Add Subject</Button>
       </Group>
-      <Card className={classes.card} mt="sm">
-        <Title>ADD</Title>
+      <Group justify="center">
+      <Card className={classes.card} mt="xl" w={800} >
+        <Title order={3} ta="center">ADD SEMESTER MARKS</Title>
       <Form>
       {inputs.map((input, index) => (
         <Grid>
@@ -75,11 +78,25 @@ export function AddSemMarks() {
           </Grid>
         ))}
     </Form>
-    <Group justify="center">
+    <Group justify="center" ml="lg">
     <Button bg="transparent" style={{border:"2px solid #F8B179",marginTop:"10px"}} >Calculate SGPA</Button>
-
     </Group>
+    <Text ta="right" fz="lg">
+       SGPA:<Mark ml="xs">8.9</Mark>
+    </Text>
     </Card>
+    </Group>
+    <Dialog opened={opened}  onClose={close} size="lg" radius="md" style={{border:"2px solid #F8B179",marginTop:"10px",color:"#F8B179",backgroundColor:"#676F9D"}}>
+        <Group align="flex-end">
+          <TextInput placeholder="Enter The Sem" style={{ flex: 1 }} />
+          <Link to="/academics">
+          <Button bg="transparent" style={{border:"2px solid #F8B179",marginTop:"10px",color:"#F8B179"}} >Save</Button>
+          </Link>
+        </Group>
+      </Dialog>
+      <Group justify="center">
+      <Button bg="transparent" style={{border:"2px solid #F8B179",marginTop:"10px"}} onClick={toggle} >Save</Button>
+      </Group>
       </AppShell.Main>
     </AppShell>
   );

@@ -50,7 +50,7 @@ export function AddCertificates() {
                 mt="lg">
                 </TextInput>
                 <TextInput
-                label='Issued-Date'
+                label='Add File'
                 required
                 type="file"
                 mt="lg">
