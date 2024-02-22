@@ -23,10 +23,13 @@ const LoginTab = () => (
   const SignupTab = () => (
     <Fieldset variant="unstyled">
       <Text size='lg' p={"10"} ta={"center"} >Create an account</Text>
-      <TextInput placeholder="username" />
+      <TextInput placeholder="Student Name" />
       <TextInput placeholder="email/phone num"mt={"10"} />
+      <TextInput placeholder="Branch" mt={10}/>
+
       <PasswordInput placeholder="new password" mt={"10"}/>
       <PasswordInput placeholder="confirm password" mt={"10"} />
+
       <Divider my="xs" label="Or" labelPosition="center" />
       
       <Button fullWidth mt={"md"} bg={"black"}>Signup</Button>
