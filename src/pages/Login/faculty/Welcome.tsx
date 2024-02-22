@@ -52,7 +52,6 @@ export function Login() {
   return (
     
     <Grid className={classes.grid}>
-        
       <Grid.Col span={6} offset={6} className={classes.col} >
         <Tabs  variant="outline" radius="lg" defaultValue="gallery" className={classes.tabs} >
           <Tabs.List className={classes.tabslist}>
