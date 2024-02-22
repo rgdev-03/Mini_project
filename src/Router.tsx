@@ -6,13 +6,9 @@ import { Staff } from './pages/staff/Staff';
 import {Staffadd} from './pages/staff/Staffadd';
 import { Students } from './pages/staff/Students';
 import {Academics} from './pages/staff/Academics';
-import {HomePage} from './pages/staff/Home.page';
-import { Login } from './components/Login/Welcome';
+import { Login } from './pages/Login/faculty/Welcome';
 const router = createBrowserRouter([
-  {
-    path: '/homepage',
-    element: <HomePage />,
-  },
+
   {
     path:'/login',
     element:<Login/>,
