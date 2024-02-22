@@ -8,7 +8,6 @@ import { StudentCertificates } from './pages/Student/stucertificates';
 import { AddCertificates } from './pages/Student/AddCertificate';
 import { AddSemMarks } from './pages/Student/AddSemMarks';
 import { Academics } from './pages/Student/Academics';
-
 const router = createBrowserRouter([
   {
     path: '/',
