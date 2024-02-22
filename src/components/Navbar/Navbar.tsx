@@ -18,7 +18,7 @@ export function Navbar() {
     <nav className={classes.navbar}>
       <div className={classes.navbarMain}>
         <Text className={classes.name}>Mini-Project</Text>
-        <Link to="/homepage">
+        <Link to="/navbar">
         <NavLink
         label="Dashboard"
         className={classes.link}
