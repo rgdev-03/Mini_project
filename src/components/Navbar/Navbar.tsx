@@ -10,9 +10,6 @@ import {
 
 import classes from './Navbar.module.css';
 import { Link } from 'react-router-dom';
-
-
-
 export function Navbar() {
   return (
     <nav className={classes.navbar}>

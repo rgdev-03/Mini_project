@@ -4,9 +4,9 @@ import { About } from './pages/About/About';
 import {Navbar} from './components/Navbar/Navbar'
 import { Staff } from './pages/staff/Staff';
 import {Staffadd} from './pages/staff/Staffadd';
-import { Students } from './pages/Students';
-import {Academics} from './pages/Academics';
-import {HomePage} from './pages/Home.page';
+import { Students } from './pages/staff/Students';
+import {Academics} from './pages/staff/Academics';
+import {HomePage} from './pages/staff/Home.page';
 import { Login } from './components/Login/Welcome';
 const router = createBrowserRouter([
   {
