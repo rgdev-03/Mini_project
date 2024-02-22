@@ -3,26 +3,10 @@ import {
   Grid, Tabs, TextInput, PasswordInput, Anchor, Checkbox, Button, Group, Avatar, Divider, Fieldset, Text
 } from '@mantine/core';
 import { IconBrandGoogleFilled, IconBrandWindows, IconBrandFacebookFilled } from '@tabler/icons-react';
-import { GoogleLogin } from 'react-google-login';
 import classes from './Login.module.css'
 import { Link } from 'react-router-dom';
 
-const GoogleOAuthButton = () => {
-  const responseGoogle = (response: any) => {
-    console.log(response);
-    // Handle the OAuth response, like sending the token to your backend
-  };
-  
-  return (
-    <GoogleLogin
-      clientId="142525109657-6t0h8ucg8vm5pgnrpsmg22lvhr6soocl.apps.googleusercontent.com" // Replace with your Google client ID
-      buttonText="Login with Google"
-      onSuccess={responseGoogle}
-      onFailure={responseGoogle}
-      cookiePolicy={'single_host_origin'}
-    />
-  );
-};
+
 
 const LoginTab = () => (
     <Link to="/navbar">
@@ -39,7 +23,7 @@ const LoginTab = () => (
     <Divider my="xs" label="Or" labelPosition="center" />
 
     <Group style={{ alignContent: "center", justifyContent: "center", marginTop: "10px" ,marginRight:"20px", padding:""}}>
-    <GoogleOAuthButton />
+  
     </Group>
   </Fieldset>
   </Link>
