@@ -3,11 +3,11 @@ import {
   Grid, Tabs, TextInput, PasswordInput, Anchor, Checkbox, Button, Group, Avatar, Divider, Fieldset, Text
 } from '@mantine/core';
 import { IconBrandGoogleFilled, IconBrandWindows, IconBrandFacebookFilled } from '@tabler/icons-react';
-import { GoogleLogin } from 'react-google-login';
 import classes from './Login.module.css'
 import { Link } from 'react-router-dom';
 
 
+<<<<<<< HEAD:src/components/Login/Welcome.tsx
 const GoogleOAuthButton = () => {
   const responseGoogle = (response: any) => {
     console.log(response);
@@ -24,6 +24,8 @@ const GoogleOAuthButton = () => {
     />
   );
 };
+=======
+>>>>>>> 381ae4d03cdf5139c0e6a20fd817ffb91d966e15:src/pages/Login/faculty/Welcome.tsx
 
 const LoginTab = () => (
   <Fieldset variant="unstyled">
@@ -38,7 +40,7 @@ const LoginTab = () => (
     <Button fullWidth mt={"md"} color="black">Login</Button></Link>
     <Divider my="xs" label="Or" labelPosition="center" />
     <Group style={{ alignContent: "center", justifyContent: "center", marginTop: "10px" ,marginRight:"20px", padding:""}}>
-    <GoogleOAuthButton />
+  
     </Group>
   </Fieldset>
 );
@@ -65,7 +67,11 @@ export function Login() {
   return (
     
     <Grid className={classes.grid}>
+<<<<<<< HEAD:src/components/Login/Welcome.tsx
       <Grid.Col mt={150}>
+=======
+      <Grid.Col span={6} offset={6} className={classes.col} >
+>>>>>>> 381ae4d03cdf5139c0e6a20fd817ffb91d966e15:src/pages/Login/faculty/Welcome.tsx
         <Tabs  variant="outline" radius="lg" defaultValue="gallery" className={classes.tabs} >
           <Tabs.List className={classes.tabslist}>
             <Tabs.Tab value="gallery" className={classes.tab}>LOGIN</Tabs.Tab>
