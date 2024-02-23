@@ -7,6 +7,7 @@ import { GoogleLogin } from 'react-google-login';
 import classes from './Login.module.css'
 import { Link } from 'react-router-dom';
 
+
 const GoogleOAuthButton = () => {
   const responseGoogle = (response: any) => {
     console.log(response);
@@ -25,28 +26,24 @@ const GoogleOAuthButton = () => {
 };
 
 const LoginTab = () => (
-    <Link to="/navbar">
   <Fieldset variant="unstyled">
-    <Text size='lg' ta={"center"}>Welcome back</Text>
+    <Text size='lg' ta={"center"} >Welcome back</Text>
     <TextInput placeholder="email/phone num" />
     <PasswordInput placeholder="Password" mt={"md"} />
     <Anchor href="#" underline="hover">
       <Text ta={"right"}>forgot password?</Text>
     </Anchor>
     <Checkbox defaultChecked label="Remember me" size="xs" />
-    <a href="#">
-    <Button fullWidth mt={"md"} color="black">Login</Button></a>
+   <Link to="/facultyland">
+    <Button fullWidth mt={"md"} color="black">Login</Button></Link>
     <Divider my="xs" label="Or" labelPosition="center" />
-
     <Group style={{ alignContent: "center", justifyContent: "center", marginTop: "10px" ,marginRight:"20px", padding:""}}>
     <GoogleOAuthButton />
     </Group>
   </Fieldset>
-  </Link>
 );
 
 const SignupTab = () => (
-    <Link to="/navbar">
   <Fieldset variant="unstyled">
     <Text size='lg' p={"10"} ta={"center"} >Create an account</Text>
     <TextInput placeholder="username" />
@@ -59,17 +56,16 @@ const SignupTab = () => (
       <Avatar><IconBrandWindows /></Avatar>
       <Avatar><IconBrandFacebookFilled /></Avatar>
     </Group>
-    <Button fullWidth mt={"md"} bg={"black"}>Signup</Button>
+    <a href="/navbar">
+    <Button fullWidth mt={"md"} bg={"black"}>Signup</Button></a>
   </Fieldset>
-  </Link>
 );
 
 export function Login() {
   return (
     
     <Grid className={classes.grid}>
-        
-      <Grid.Col span={6} offset={6} className={classes.col} >
+      <Grid.Col mt={150}>
         <Tabs  variant="outline" radius="lg" defaultValue="gallery" className={classes.tabs} >
           <Tabs.List className={classes.tabslist}>
             <Tabs.Tab value="gallery" className={classes.tab}>LOGIN</Tabs.Tab>

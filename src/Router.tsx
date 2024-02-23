@@ -1,13 +1,14 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Landing } from './pages/Landing/Landing';
 import { About } from './pages/About/About';
-import {Navbar} from './components/Navbar/Navbar'
+import {NavBar} from './components/Navbar/Navbar'
 import { Staff } from './pages/staff/Staff';
 import {Staffadd} from './pages/staff/Staffadd';
 import { Students } from './pages/Students';
 import {Academics} from './pages/Academics';
 import {HomePage} from './pages/Home.page';
 import { Login } from './components/Login/Welcome';
+import { FacultyLand } from './pages/staff/facultyland';
 const router = createBrowserRouter([
   {
     path: '/homepage',
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/navbar',
-    element: <Navbar/>,
+    element: <NavBar/>,
   },
   {
     path: '/staff',
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: '/academics',
     element: <Academics/>,
+  },
+  {
+    path: '/facultyland',
+    element: <FacultyLand/>,
   },
 ]);
 

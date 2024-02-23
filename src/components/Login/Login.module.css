@@ -1,16 +1,17 @@
 .grid{
-    background-color:#f7f7f7;
-    height:100vh,
+    background-color:#676F9D;
+    height:100vh;
+    box-shadow:7px 3px 2px;
+    align-content: center;
   }
   .col{
-    background-color:white;
+    background-color:#676F9D;
     height:100vh;
     display:flex;
     align-content:center;
     justify-content:center;
     padding:150px;
     offset:6px;
-  
   }
   .tabs{
     background-color:#f7f7f7;
