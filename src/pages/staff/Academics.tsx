@@ -3,7 +3,7 @@ import { AppShell, Grid} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { NativeSelect } from '@mantine/core';
 import { Button ,Table,Group,Burger,Title} from '@mantine/core';
-import classes from './staff/staff.module.css';
+import classes from './staff.module.css';
 const elements = [
   { position: 6, name: 'Carbon', mass:'bbhbs'},
   { position: 7,  name: 'Nitrogen',mass:'sccscs'},

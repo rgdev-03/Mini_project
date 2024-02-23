@@ -4,17 +4,11 @@ import { About } from './pages/About/About';
 import {NavBar} from './components/Navbar/Navbar'
 import { Staff } from './pages/staff/Staff';
 import {Staffadd} from './pages/staff/Staffadd';
-<<<<<<< HEAD
-import { Students } from './pages/Students';
-import {Academics} from './pages/Academics';
-import {HomePage} from './pages/Home.page';
-import { Login } from './components/Login/Welcome';
-import { FacultyLand } from './pages/staff/facultyland';
-=======
 import { Students } from './pages/staff/Students';
 import {Academics} from './pages/staff/Academics';
 import { Login } from './pages/Login/faculty/Welcome';
->>>>>>> 381ae4d03cdf5139c0e6a20fd817ffb91d966e15
+import { FacultyLand } from './pages/staff/facultyland';
+
 const router = createBrowserRouter([
 
   {

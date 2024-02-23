@@ -6,27 +6,6 @@ import { IconBrandGoogleFilled, IconBrandWindows, IconBrandFacebookFilled } from
 import classes from './Login.module.css'
 import { Link } from 'react-router-dom';
 
-
-<<<<<<< HEAD:src/components/Login/Welcome.tsx
-const GoogleOAuthButton = () => {
-  const responseGoogle = (response: any) => {
-    console.log(response);
-    // Handle the OAuth response, like sending the token to your backend
-  };
-  
-  return (
-    <GoogleLogin
-      clientId="142525109657-6t0h8ucg8vm5pgnrpsmg22lvhr6soocl.apps.googleusercontent.com" // Replace with your Google client ID
-      buttonText="Login with Google"
-      onSuccess={responseGoogle}
-      onFailure={responseGoogle}
-      cookiePolicy={'single_host_origin'}
-    />
-  );
-};
-=======
->>>>>>> 381ae4d03cdf5139c0e6a20fd817ffb91d966e15:src/pages/Login/faculty/Welcome.tsx
-
 const LoginTab = () => (
   <Fieldset variant="unstyled">
     <Text size='lg' ta={"center"} >Welcome back</Text>
@@ -67,11 +46,9 @@ export function Login() {
   return (
     
     <Grid className={classes.grid}>
-<<<<<<< HEAD:src/components/Login/Welcome.tsx
-      <Grid.Col mt={150}>
-=======
+
       <Grid.Col span={6} offset={6} className={classes.col} >
->>>>>>> 381ae4d03cdf5139c0e6a20fd817ffb91d966e15:src/pages/Login/faculty/Welcome.tsx
+
         <Tabs  variant="outline" radius="lg" defaultValue="gallery" className={classes.tabs} >
           <Tabs.List className={classes.tabslist}>
             <Tabs.Tab value="gallery" className={classes.tab}>LOGIN</Tabs.Tab>
