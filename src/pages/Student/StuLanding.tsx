@@ -1,4 +1,4 @@
-import { NavBar } from '@/components/NavBar/NavBar';
+import { NavBar } from '@/components/stunav/Navbar';
 import { AppShell, Burger, Group, Skeleton, Title,Text, Box,Avatar,Card,Table, TableData,Grid} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './student.module.css'
