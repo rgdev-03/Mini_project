@@ -1,0 +1,60 @@
+.header{
+    border: none;
+    background-color:#676F9D;
+    color:white;
+    border-bottom: 1px solid #F8B179;
+}
+.card{
+    background-color: #ffffff45;
+    padding: 30px;
+    width:100%;
+    color: #ffff;
+    height: 510px;
+    border-radius: 20px;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: #676F9D;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #F8B179;
+    height: 10px;
+    border-radius: 20px;
+}
+
+.box{ 
+    padding: 30px;
+    width:48%;
+    color: #ffff;
+}
+ .box p{
+    font-size: 20px;
+
+}
+
+
+@keyframes glow {
+    0% {
+      box-shadow: 0 0 10px #F8B179;
+    }
+    100% {
+      box-shadow: 0 0 20px #F8B179;
+    }
+  }
+  
+  button:hover {
+    box-shadow: 0 0 20px #F8B179; /* Glow effect on hover */
+    animation: none; /* Disable the animation on hover */
+  }
+  button{
+    background-color: transparent;
+    border: 2px solid #F8B179;
+  }
+  form{
+    overflow: auto;
+    padding: 20px;
+  }
