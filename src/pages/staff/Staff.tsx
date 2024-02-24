@@ -1,17 +1,22 @@
 
-import { Navbar, } from '@/components/Navbar/Navbar';
+import { NavBar } from '@/components/Navbar/Navbar';
 import { AppShell, Group} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Grid,} from '@mantine/core';
-import { Button } from '@mantine/core';
+import { Button,Title,Burger } from '@mantine/core';
 import { Table } from '@mantine/core';
 import { Link } from 'react-router-dom';
-
+import classes from './staff.module.css';
 const elements = [
     { position: 6, name: 'Carbon', mass:'bbhbs'},
     { position: 7,  name: 'Nitrogen',mass:'sccscs'},
     { position: 39, name: 'Yatrium',mass:'bbjbjd' },
     { position: 56,  name: 'Barium',mass:'gyggdwd' },
+    { position: 58,  name: 'Cerium',mass:'hbhehdb' },
+    { position: 58,  name: 'Cerium',mass:'hbhehdb' },
+    { position: 58,  name: 'Cerium',mass:'hbhehdb' },
+    { position: 58,  name: 'Cerium',mass:'hbhehdb' },
+    { position: 58,  name: 'Cerium',mass:'hbhehdb' },
     { position: 58,  name: 'Cerium',mass:'hbhehdb' },
     { position: 58,  name: 'Cerium',mass:'hbhehdb' },
     { position: 58,  name: 'Cerium',mass:'hbhehdb' },
@@ -28,16 +33,30 @@ const rows = elements.map((element) => (
   ));
 
 export function Staff() {
-  const [opened] = useDisclosure();
+  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
+  const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
  
   return (
     <AppShell
-      navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}
+      header={{ height: 60 }}
+      navbar={{
+        width: 300,
+        breakpoint: 'sm',
+        collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
+      }}
       padding="md"
-    >
+      bg="#2D3250"
+      > 
+        <AppShell.Header className={classes.header}>
+        <Group h="100%" px="md"  >
+          <Burger opened={mobileOpened} onClick={toggleMobile} hiddenFrom="sm" size="sm" />
+            <Title order={4}>RYMEC PMS</Title>
+        </Group>
+      </AppShell.Header>
+
       
       <AppShell.Navbar >
-        <Navbar/>
+        <NavBar/>
       </AppShell.Navbar>
 
       <AppShell.Main>
@@ -49,7 +68,7 @@ export function Staff() {
             </Group>
              </Grid>
 
-      <Table ml="10px" mt="100px" borderColor='black' withTableBorder withRowBorders={false}>
+      <Table ml="5px" mt="100px" borderColor='white' withTableBorder withRowBorders={false}>
       <Table.Thead>
         <Table.Tr >
           <Table.Th>Staff id</Table.Th>

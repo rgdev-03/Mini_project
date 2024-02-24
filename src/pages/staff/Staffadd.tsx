@@ -1,19 +1,32 @@
-import { Navbar } from '@/components/Navbar/Navbar';
+import { NavBar } from '@/components/Navbar/Navbar';
 import { AppShell, Grid} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { NativeSelect } from '@mantine/core';
-import { Button } from '@mantine/core';
-
+import { Button,Group,Burger,Title} from '@mantine/core';
+import classes from './staff.module.css';
 export function Staffadd() {
-  const [opened] = useDisclosure();
+  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
+  const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
   return (
     <AppShell
-      navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}
+      header={{ height: 60 }}
+      navbar={{
+        width: 300,
+        breakpoint: 'sm',
+        collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
+      }}
       padding="md"
-    >
+      bg="#2D3250"
+      > 
+        <AppShell.Header className={classes.header}>
+        <Group h="100%" px="md"  >
+          <Burger opened={mobileOpened} onClick={toggleMobile} hiddenFrom="sm" size="sm" />
+            <Title order={4}>RYMEC PMS</Title>
+        </Group>
+      </AppShell.Header>
 
       <AppShell.Navbar >
-        <Navbar/>
+        <NavBar/>
       </AppShell.Navbar>
 
       <AppShell.Main>

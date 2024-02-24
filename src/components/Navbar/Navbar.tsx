@@ -1,21 +1,27 @@
-import { Group, Code,NavLink,Text } from '@mantine/core';
+import { useState } from 'react';
+import { Group, Code,NavLink } from '@mantine/core';
 import {
   IconLayoutDashboard,
-  IconMan,
   IconSchool,
-  IconCertificate,
-  IconBrandMinecraft,
-  IconNotebook
+  IconMan,
+    IconCertificate,
+    IconNotebook,
+    IconBrandMinecraft
 } from '@tabler/icons-react';
-
 import classes from './Navbar.module.css';
 import { Link } from 'react-router-dom';
-export function Navbar() {
+
+
+
+
+export function NavBar() {
+
+
   return (
-    <nav className={classes.navbar}>
+    <nav className={classes.navbar} >
       <div className={classes.navbarMain}>
-        <Text className={classes.name}>Mini-Project</Text>
-        <Link to="/navbar">
+        <Group className={classes.header} justify="space-between" >
+        <Link to="/facultyland">
         <NavLink
         label="Dashboard"
         className={classes.link}
@@ -62,9 +68,9 @@ export function Navbar() {
     
       />
       </Link>
-      </div>
 
- 
- </nav>
-);
+        </Group>
+      </div>
+    </nav>
+  );
 }
