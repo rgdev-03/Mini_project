@@ -10,13 +10,7 @@ import {
 } from '@tabler/icons-react';
 import classes from './Navbar.module.css';
 import { Link } from 'react-router-dom';
-
-
-
-
 export function NavBar() {
-
-
   return (
     <nav className={classes.navbar} >
       <div className={classes.navbarMain}>
