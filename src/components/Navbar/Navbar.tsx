@@ -1,68 +1,64 @@
 import { useState } from 'react';
 import { Group, Code,NavLink } from '@mantine/core';
 import {
-  IconLayoutDashboard,
-  IconSchool,
-  IconMan,
+    IconSwitchHorizontal,
+    IconLogout,
+    IconUserCircle,
     IconCertificate,
-    IconNotebook,
-    IconBrandMinecraft
+    IconBrandGoogleAnalytics,
+    IconSettings,
+    IconFileCode2
 } from '@tabler/icons-react';
-import classes from './Navbar.module.css';
+import classes from './NavBar.module.css';
 import { Link } from 'react-router-dom';
+
+
+
 export function NavBar() {
+
   return (
     <nav className={classes.navbar} >
       <div className={classes.navbarMain}>
         <Group className={classes.header} justify="space-between" >
-        <Link to="/facultyland">
+          <Link to="/stuland">
         <NavLink
-        label="Dashboard"
+        label="Profile"
+        leftSection={< IconUserCircle size="2rem"  />}
         className={classes.link}
-        leftSection={<IconLayoutDashboard/>}
-      />
+        />
         </Link>
-     <Link to="/staff">
-        <NavLink
-        leftSection={<IconSchool/>}
-        label="Staff"
+        <Link to="/stucertificates">
+         <NavLink
+        href="#required-for-focus"
+        label="Certificates"
+        leftSection={< IconCertificate size="2rem"  />}
         className={classes.link}
-    
-      />
-      </Link>
-      <Link to="/students">
-        <NavLink
-        leftSection={<IconMan/>}
-        label="Students"
-        className={classes.link}
-    
-      />
-      </Link>
-      <Link to="#">
-        <NavLink
-        leftSection={<IconCertificate/>}
-        label="Achievements"
-        className={classes.link}
-    
-      />
-      </Link>
-      <Link to="/academics">
-        <NavLink
-        leftSection={<IconNotebook/>}
+        />
+        </Link>
+        <Link to="/academics">
+         <NavLink
+        href="#required-for-focus"
         label="Academics"
+        leftSection={< IconBrandGoogleAnalytics size="2rem" />}
         className={classes.link}
-    
-      />
-      </Link>
-      <Link to="#">
-        <NavLink
-        leftSection={<IconBrandMinecraft/>}
-        label="Admin"
+        />
+        </Link>
+        {/* <Link to="#">
+         <NavLink
+        href="#required-for-focus"
+        label="Settings"
+        leftSection={< IconSettings size="2rem"  />}
         className={classes.link}
-    
-      />
-      </Link>
-
+        />
+        </Link> */}
+         <Link to="/stuprojects">
+         <NavLink
+        href="#required-for-focus"
+        label="Projects"
+        leftSection={< IconFileCode2 size="2rem" />}
+        className={classes.link}
+        />
+        </Link>
         </Group>
       </div>
     </nav>
