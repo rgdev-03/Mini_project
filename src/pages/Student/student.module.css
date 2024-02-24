@@ -9,7 +9,7 @@
     padding: 30px;
     width:100%;
     color: #ffff;
-    height: 510px;
+    height: fit-content;
     border-radius: 20px;
     overflow: auto;
 }

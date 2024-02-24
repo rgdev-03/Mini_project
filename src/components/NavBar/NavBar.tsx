@@ -6,7 +6,8 @@ import {
     IconUserCircle,
     IconCertificate,
     IconBrandGoogleAnalytics,
-    IconSettings
+    IconSettings,
+    IconFileCode2
 } from '@tabler/icons-react';
 import classes from './NavBar.module.css';
 import { Link } from 'react-router-dom';
@@ -53,8 +54,8 @@ export function NavBar() {
          <Link to="/stuprojects">
          <NavLink
         href="#required-for-focus"
-        label="Academics"
-        leftSection={< IconBrandGoogleAnalytics size="2rem" />}
+        label="Projects"
+        leftSection={< IconFileCode2 size="2rem" />}
         className={classes.link}
         />
         </Link>
