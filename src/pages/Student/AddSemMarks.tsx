@@ -38,7 +38,6 @@ export function AddSemMarks() {
       </AppShell.Navbar>
       <AppShell.Main>
       <Group justify="right" mt="md"> 
-      
         <Button bg="transparent" style={{border:"2px solid #F8B179"}} onClick={addInputSet}>Add Subject</Button>
       </Group>
       <Group justify="center">
