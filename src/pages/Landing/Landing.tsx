@@ -5,6 +5,7 @@ import { Header } from '@/components/Header/Header';
 import Carrousel from '@/components/carsouel/carousel';
 import {slides} from '../../data/carrsouel.json'
 import { Link } from 'react-router-dom';
+
 import { MobNav } from '@/components/MobNav/MobNav';
 
 export function Landing() {
