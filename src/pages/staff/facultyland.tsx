@@ -1,5 +1,7 @@
 
+
 import { NavBar } from '@/components/stunav/Navbar';
+
 import { AppShell, Group} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Grid,} from '@mantine/core';

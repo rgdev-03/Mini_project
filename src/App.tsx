@@ -8,7 +8,7 @@ import  './app.module.css';
 export default function App() {
   return (
     <MantineProvider theme={theme}>
-      <Router />
+      <Router/>
     </MantineProvider>
   );
 }

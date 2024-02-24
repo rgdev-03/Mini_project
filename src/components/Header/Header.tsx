@@ -18,9 +18,10 @@ export function Header() {
           <Link to="/login"><UnstyledButton className={classes.control}>Student</UnstyledButton></Link>
 
           <UnstyledButton className={classes.control}>Faculty</UnstyledButton>
+
      
           <UnstyledButton className={classes.control}>HR</UnstyledButton>
-        
+
           </Group>
         </Group>
       </AppShell.Header>
