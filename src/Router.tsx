@@ -8,6 +8,7 @@ import { StudentCertificates } from './pages/Student/stucertificates';
 import { AddCertificates } from './pages/Student/AddCertificate';
 import { AddSemMarks } from './pages/Student/AddSemMarks';
 import { Academics } from './pages/Student/Academics';
+import { StuProjects } from './pages/Student/stuprojects';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: '/addsemmarks',
     element: <AddSemMarks/>,
+  },
+  {
+    path: '/stuprojects',
+    element: <StuProjects/>,
   },
 ]);
 

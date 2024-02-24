@@ -3,37 +3,60 @@ import { Grid,Image, Title, TextInput, PasswordInput, Anchor, Checkbox, Button, 
 import { Tabs, rem } from '@mantine/core';
 import { IconPhoto, IconMessageCircle, IconSettings } from '@tabler/icons-react';
 import classes from './login.module.css'
-import { Link } from 'react-router-dom';
+import { Link ,Form} from 'react-router-dom';
 const LoginTab = () => (
-    <Fieldset variant="unstyled">
-      <Text size='lg' ta={"center"}>Welcome back</Text>
-      <TextInput placeholder="email/phone num" required/>
-      <PasswordInput placeholder="Password" mt={"md"} required />
-      <Anchor href="#" underline="hover">
-        <Text ta={"right"}>forgot password?</Text>
-      </Anchor>
-      <Checkbox defaultChecked label="Remember me" size="xs" />
-      <Link to="/stuland">
-      <Button fullWidth mt={"md"} color="black" type="submit">Login</Button></Link>
-      <Divider my="xs" label="Or" labelPosition="center" />
-      <Group style={{ alignContent: "center", justifyContent: "center", marginTop: "10px" ,marginRight:"20px", padding:""}}>
-      </Group>
-    </Fieldset>
+  <Form action="/stuland"style={{padding:"20px"}}>
+  <TextInput
+placeholder='User-Name'  required>
+  </TextInput>
+  <TextInput
+  placeholder='Password'
+  type="password"
+  
+required
+  mt="lg">
+  </TextInput>
+<Group justify="right">
+  <Link to="#">
+    <Anchor>Forgot password</Anchor>
+  </Link>
+  </Group>
+  <Group justify="center">
+  <Button type="submit" justify="center" w="100%" mt="xl" bg="transparent" style={{border:"2px solid #F8B179"}}>Login</Button>
+  </Group>
+</Form>
   );
   const SignupTab = () => (
-    <Fieldset variant="unstyled">
-      <Text size='lg' p={"10"} ta={"center"} >Create an account</Text>
-      <TextInput placeholder="Student Name" />
-      <TextInput placeholder="email/phone num"mt={"10"} />
-      <TextInput placeholder="Branch" mt={10}/>
-
-      <PasswordInput placeholder="new password" mt={"10"}/>
-      <PasswordInput placeholder="confirm password" mt={"10"} />
-
-      <Divider my="xs" label="Or" labelPosition="center" />
-      
-      <Button fullWidth mt={"md"} bg={"black"}>Signup</Button>
-    </Fieldset>
+    <Form action="/stuland"style={{padding:"20px"}}>
+    <TextInput
+  placeholder='User-Name'  required
+    >
+    </TextInput>
+    <TextInput
+  placeholder='Branch' 
+  mt="lg" required
+    >
+    </TextInput>
+    <TextInput
+    placeholder='Password'
+    type="password"
+    
+  required
+    mt="lg">
+    </TextInput>
+    <TextInput
+    placeholder='confirm Password'
+    type="password"
+    
+  required
+    mt="lg">
+    </TextInput>
+  
+    <Group justify="center">
+    
+    <Button type="submit" justify="center" w="100%" mt="xl" bg="transparent" style={{border:"2px solid #F8B179"}}>Signup</Button>
+    </Group>
+  </Form>
   );
 export function Login() {
   return (

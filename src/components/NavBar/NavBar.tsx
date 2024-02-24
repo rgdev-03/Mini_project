@@ -42,11 +42,19 @@ export function NavBar() {
         className={classes.link}
         />
         </Link>
-        <Link to="#">
+        {/* <Link to="#">
          <NavLink
         href="#required-for-focus"
         label="Settings"
         leftSection={< IconSettings size="2rem"  />}
+        className={classes.link}
+        />
+        </Link> */}
+         <Link to="/stuprojects">
+         <NavLink
+        href="#required-for-focus"
+        label="Academics"
+        leftSection={< IconBrandGoogleAnalytics size="2rem" />}
         className={classes.link}
         />
         </Link>
