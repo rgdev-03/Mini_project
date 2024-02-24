@@ -1,4 +1,4 @@
-import { NavBar } from '@/components/NavBar/NavBar';
+import { NavBar } from '@/components/stunav/Navbar';
 import { AppShell, Burger, Group, Skeleton, Title,Text, Box,Avatar,Card,Table, TableData, Button} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './student.module.css'
@@ -48,7 +48,9 @@ export function StuProjects() {
       <AppShell.Main c="white">
       <Group justify="right" mt="md"> 
       <Link to="/addprojects" >
+
         <Button bg="transparent" style={{border:"2px solid #F8B179"}}>Add Projects</Button>
+
         </Link>
       </Group>
       <Table mt="xl" horizontalSpacing="70px">

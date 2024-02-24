@@ -1,4 +1,4 @@
-import { NavBar } from '@/components/NavBar/NavBar';
+import { NavBar } from '@/components/stunav/Navbar';
 import { AppShell, Burger, Group, Skeleton, Title,Text, Box,Avatar,Card,Table, TableData, Button,Center,TextInput,Container} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './student.module.css'
@@ -31,7 +31,9 @@ export function AddProjects() {
       <AppShell.Main>
       <Group justify="center" mt={100}>
         <Card  w={500} className={classes.card}>
+
             <Title order={3} ta="center">ADD PROJECTS</Title>
+
             <Form action="/stucertificates"style={{padding:"20px"}}>
                 <TextInput
                 label='Project-Name'
@@ -51,7 +53,9 @@ export function AddProjects() {
                 mt="lg">
                 </TextInput>
                 <Group justify="center">
+
                 <Button type="submit" justify="center" w="100%" mt="xl">ADD Projects</Button>
+
                 </Group>
             </Form>
         </Card>

@@ -1,4 +1,4 @@
-import { NavBar } from '@/components/NavBar/NavBar';
+import { NavBar } from '@/components/stunav/Navbar';
 import { AppShell, Burger, Group, Skeleton, Title,Text, Box,Avatar,Card,Table, TableData, Button,Center,TextInput,Container, Grid,Mark,Dialog} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './student.module.css'
@@ -38,7 +38,6 @@ export function AddSemMarks() {
       </AppShell.Navbar>
       <AppShell.Main>
       <Group justify="right" mt="md"> 
-      
         <Button bg="transparent" style={{border:"2px solid #F8B179"}} onClick={addInputSet}>Add Subject</Button>
       </Group>
       <Group justify="center">
