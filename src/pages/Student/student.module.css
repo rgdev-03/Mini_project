@@ -2,7 +2,7 @@
     border: none;
     background-color:#676F9D;
     color:white;
-    border-bottom: 1px solid #F8B179;
+    border-bottom: 2px solid #F8B179;
 }
 .card{
     background-color: #ffffff45;
@@ -12,6 +12,7 @@
     height: fit-content;
     border-radius: 20px;
     overflow: auto;
+    max-height: 500px;
 }
 
 ::-webkit-scrollbar {

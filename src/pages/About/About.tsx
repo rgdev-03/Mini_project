@@ -5,7 +5,9 @@ import { Header } from '@/components/Header/Header';
 import Carrousel from '@/components/carsouel/carousel';
 import {slides} from '../../data/carrsouel.json'
 import { IconCircleCheck, IconCircleDashed } from '@tabler/icons-react';
+
 import { MobNav } from '@/components/MobNav/MobNav';
+
 
 export function About() {
   const [opened, { toggle }] = useDisclosure();
@@ -27,6 +29,7 @@ export function About() {
           <Title order={4}>RYMEC PMS</Title>  
             <Group ml="xl" gap={0} visibleFrom="sm">
             <Header/>
+            
             </Group>
           </Group>
         </Group>
@@ -36,8 +39,10 @@ export function About() {
       <MobNav/>
       </AppShell.Navbar>
       <AppShell.Main bg="#2D3250" >
+
       <Container fluid  mx={200} py={20}>
       <Card bg="#676F9D" w="100%" h="100%"  ta="center" radius={10} c="white" >
+
             <Title order={2}>About Placement</Title>
             <Divider/>
             <Title c="teal.4" my={10} order={4}>"GOD HAS PROVIDED A JOB FOR EVERY ONE & OUR JOB IS TO GET YOU ON"</Title>
