@@ -8,12 +8,17 @@ import { StuProjects } from './pages/Student/stuprojects';
 import { AddProjects } from './pages/Student/addprojects';
 import { Academics } from './pages/Student/Academics';
 import { AddSemMarks } from './pages/Student/AddSemMarks';
+import { About } from './pages/About/About';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Landing/>,
   },
+  {
+    path:'/about',
+    element:<About/>,
+  }
   {
     path: '/login',
     element: <Login/>,
