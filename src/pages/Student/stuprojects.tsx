@@ -47,7 +47,7 @@ export function StuProjects() {
       </AppShell.Navbar>
       <AppShell.Main c="white">
       <Group justify="right" mt="md"> 
-      <Link to="/addsemmarks" >
+      <Link to="/addprojects" >
         <Button bg="transparent" style={{border:"2px solid #F8B179"}}>Add Projects</Button>
         </Link>
       </Group>

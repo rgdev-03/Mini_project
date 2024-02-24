@@ -31,7 +31,7 @@ export function AddProjects() {
       <AppShell.Main>
       <Group justify="center" mt={100}>
         <Card  w={500} className={classes.card}>
-            <Title order={3} ta="center">ADD CERTIFICATES</Title>
+            <Title order={3} ta="center">ADD PROJECTS</Title>
             <Form action="/stucertificates"style={{padding:"20px"}}>
                 <TextInput
                 label='Project-Name'
@@ -39,24 +39,19 @@ export function AddProjects() {
                 >
                 </TextInput>
                 <TextInput
-                label='Project-type'
+                label='Project-Type'
                 required
                 mt="lg">
                 </TextInput>
+               
                 <TextInput
-                label='Git-Repo-Link'
+                label='Git-Repo_Link'
                 required
-                type="date"
-                mt="lg">
-                </TextInput>
-                <TextInput
-                label='Add File'
-                required
-                type="file"
+                type="text"
                 mt="lg">
                 </TextInput>
                 <Group justify="center">
-                <Button type="submit" justify="center" w="100%" mt="xl">Add Projects</Button>
+                <Button type="submit" justify="center" w="100%" mt="xl">ADD Projects</Button>
                 </Group>
             </Form>
         </Card>
