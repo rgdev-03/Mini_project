@@ -1,4 +1,4 @@
-import { NavBar } from '@/components/Navbar/Navbar';
+import { NavBar } from '@/components/staffnav/Navbar';
 import { AppShell, Grid} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { NativeSelect } from '@mantine/core';
