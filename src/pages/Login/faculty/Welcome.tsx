@@ -1,71 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  Grid, Tabs, TextInput, PasswordInput, Anchor, Checkbox, Button, Group, Avatar, Divider, Fieldset, Text
+  Grid, Tabs, TextInput, PasswordInput, Anchor, Checkbox, Button, Group, Avatar, Divider, Fieldset, Text,Image
 } from '@mantine/core';
 import { IconBrandGoogleFilled, IconBrandWindows, IconBrandFacebookFilled } from '@tabler/icons-react';
-import classes from './Login.module.css'
-import { Link } from 'react-router-dom';
-
+import { Link ,Form} from 'react-router-dom';
 const LoginTab = () => (
-  <Fieldset variant="unstyled">
-    <Text size='lg' ta={"center"} >Welcome back</Text>
-    <TextInput placeholder="email/phone num" />
-    <PasswordInput placeholder="Password" mt={"md"} />
-    <Anchor href="#" underline="hover">
-      <Text ta={"right"}>forgot password?</Text>
-    </Anchor>
-    <Checkbox defaultChecked label="Remember me" size="xs" />
-   <Link to="/facultyland">
-    <Button fullWidth mt={"md"} color="black">Login</Button></Link>
-    <Divider my="xs" label="Or" labelPosition="center" />
-    <Group style={{ alignContent: "center", justifyContent: "center", marginTop: "10px" ,marginRight:"20px", padding:""}}>
+  <Form action="/facultyland"style={{padding:"20px"}}>
+  <TextInput
+placeholder='User-Name'  required>
+  </TextInput>
+  <TextInput
+  placeholder='Password'
+  type="password"
   
-    </Group>
-  </Fieldset>
+required
+  mt="lg">
+  </TextInput>
+<Group justify="right">
+  <Link to="#">
+    <Anchor>Forgot password</Anchor>
+  </Link>
+  </Group>
+  <Group justify="center">
+  <Button type="submit" justify="center" w="100%" mt="xl" bg="transparent" style={{border:"2px solid #F8B179"}}>Login</Button>
+  </Group>
+</Form>
 );
 
 const SignupTab = () => (
-  <Fieldset variant="unstyled">
-    <Text size='lg' p={"10"} ta={"center"} >Create an account</Text>
-    <TextInput placeholder="username" />
-    <TextInput placeholder="email/phone num"mt={"10"} />
-    <PasswordInput placeholder="new password" mt={"10"}/>
-    <PasswordInput placeholder="confirm password" mt={"10"} />
-    <Divider my="xs" label="Or" labelPosition="center" />
-    <Group className={classes.social}>
-      <Avatar><IconBrandGoogleFilled /></Avatar>
-      <Avatar><IconBrandWindows /></Avatar>
-      <Avatar><IconBrandFacebookFilled /></Avatar>
-    </Group>
-    <a href="/navbar">
-    <Button fullWidth mt={"md"} bg={"black"}>Signup</Button></a>
-  </Fieldset>
+  <Form action="/facultyland"style={{padding:"20px"}}>
+  <TextInput
+placeholder='User-Name'  required
+  >
+  </TextInput>
+  <TextInput
+placeholder='Branch' 
+mt="lg" required
+  >
+  </TextInput>
+  <TextInput
+  placeholder='Password'
+  type="password"
+  
+required
+  mt="lg">
+  </TextInput>
+  <TextInput
+  placeholder='confirm Password'
+  type="password"
+  
+required
+  mt="lg">
+  </TextInput>
+
+  <Group justify="center">
+  
+  <Button type="submit" justify="center" w="100%" mt="xl" bg="transparent" color="white" style={{border:"2px solid #F8B179"}}>Signup</Button>
+  </Group>
+</Form>
 );
 
-export function Login() {
+export function StaffLogin() {
+
+
+
+
+const [showSuccess, setShowSuccess] = useState(false); 
+const [redirectUrl, setRedirectUrl] = useState(''); 
   return (
     
-    <Grid className={classes.grid}>
-
-      <Grid.Col span={6} offset={6} className={classes.col} >
-
-        <Tabs  variant="outline" radius="lg" defaultValue="gallery" className={classes.tabs} >
-          <Tabs.List className={classes.tabslist}>
-            <Tabs.Tab value="gallery" className={classes.tab}>LOGIN</Tabs.Tab>
-            <Tabs.Tab value="messages" className={classes.tab}>SIGNUP</Tabs.Tab>
-          </Tabs.List>
-
-          <Tabs.Panel value="gallery" className={classes.panel}>
-            <LoginTab />
-          </Tabs.Panel>
-
-          <Tabs.Panel value="messages" className={classes.panel}>
-            <SignupTab />
-          </Tabs.Panel>
-        </Tabs>
-      </Grid.Col>
-     
-    </Grid>
+    <Grid overflow="hidden">
+    <Grid.Col span={{ base: 12, md: 8, lg: 6 }} bg="#2D3250" h="102vh"visibleFrom="md">
+       <Image
+    src="https://rymec.edu.in/wp-content/uploads/2023/03/baim5.png"
+    h="100%"
+  /></Grid.Col>
+    <Grid.Col span={{ base: 12, md: 8, lg: 6 }} bg="#2D3250" h="102vh" ta="center" pt={150}>
+    <Tabs  variant="outline" radius="lg" defaultValue="gallery" className={classes.tabs} >
+        <Tabs.List className={classes.tabslist}>
+          <Tabs.Tab value="gallery" className={classes.tab}>LOGIN</Tabs.Tab>
+          <Tabs.Tab value="messages" className={classes.tab}>SIGNUP</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value="gallery" className={classes.panel}>
+          <LoginTab />
+        </Tabs.Panel>
+        <Tabs.Panel value="messages" className={classes.panel}>
+          <SignupTab />
+        </Tabs.Panel>
+      </Tabs>
+    </Grid.Col>
+  </Grid>
     
   );
 }

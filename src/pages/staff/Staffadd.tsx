@@ -2,8 +2,9 @@ import { NavBar } from '@/components/stunav/Navbar';
 import { AppShell, Grid} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { NativeSelect } from '@mantine/core';
-import { Button,Group,Burger,Title} from '@mantine/core';
-import classes from './staff.module.css';
+import { Button,Group,Burger,Title,TextInput} from '@mantine/core';
+import classes from '../Student/student.module.css'
+import { StaffNavBar } from '@/components/staffnav/staffnav';
 export function Staffadd() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
@@ -26,29 +27,44 @@ export function Staffadd() {
       </AppShell.Header>
 
       <AppShell.Navbar >
-        <NavBar/>
+        <StaffNavBar/>
       </AppShell.Navbar>
 
       <AppShell.Main>
         <Grid>
 
       <Grid.Col span={4}>
-      <NativeSelect variant="filled" size="lg" w="300px" radius="lg" mt="40px" label="Name:" ml={20} data={['Name', 'Angular', 'Vue']}/>       
-      </Grid.Col>
+      <TextInput
+      variant="filled"
+      size="md"
+      radius="md"
+      label="Staff Name"
+      placeholder="Enter the Staff Name"
+    />      </Grid.Col>
 
       <Grid.Col span={4}>
-      <NativeSelect variant="filled" size="lg" w="300px" radius="lg" mt="40px" label="Branch:" ml={20} data={['Branch', 'Angular', 'Vue']}/>       
-      </Grid.Col>
+      <TextInput
+      variant="filled"
+      size="md"
+      radius="md"
+      label="Branch Name"
+      placeholder="Enter the Branch"
+    />      </Grid.Col>
 
-      <Grid.Col span={3}>
-      <NativeSelect variant="filled" size="lg" w="300px" radius="lg" mt="40px" label="Department:" ml={20} data={['Department', 'Angular', 'Vue']}/>       
-      </Grid.Col>
+      <Grid.Col span={4}>
+      <TextInput
+      variant="filled"
+      size="md"
+      radius="md"
+      label="Staff Name"
+      placeholder="Input placeholder"
+    />      </Grid.Col>
 
-      <Grid.Col span={3}>
-      <Button variant="filled" color="blue" size="lg" radius="lg"  ml={1030} mt={40}>Submit</Button>
-      </Grid.Col>
-
+     
     </Grid>
+    <Group justify="right" mt="lg">
+      <Button variant="filled" color="blue" size="lg" radius="lg"  >Submit</Button>
+      </Group>
       </AppShell.Main>
     </AppShell>
   );

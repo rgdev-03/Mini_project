@@ -10,7 +10,7 @@ const elements = [
    {Semester:1,SGPA:"8.6"},
    {Semester:1,SGPA:"8.6"}
   ];
-export function Academics() {
+export function StuAcademics() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
   const rows = elements.map((element) => (

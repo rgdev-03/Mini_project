@@ -36,7 +36,7 @@ export function NavBar() {
         className={classes.link}
         />
         </Link>
-        <Link to="/academics">
+        <Link to="/stuacademics">
          <NavLink
         href="#required-for-focus"
         label="Academics"

@@ -1,10 +1,10 @@
 import { NavBar } from '@/components/stunav/Navbar';
-import { AppShell, Grid} from '@mantine/core';
+import { AppShell, Card, Grid, GridCol} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { NativeSelect ,Card} from '@mantine/core';
-import { Button ,Table,Group,Burger,Title} from '@mantine/core';
-import { StaffNavBar } from '@/components/staffnav/staffnav';
+import { NativeSelect } from '@mantine/core';
+import { Button ,Table,Group,Burger,Title,TextInput} from '@mantine/core';
 import classes from '../Student/student.module.css'
+import { StaffNavBar } from '@/components/staffnav/staffnav';
 const elements = [
   { position: 6, name: 'Carbon', mass:'bbhbs'},
   { position: 7,  name: 'Nitrogen',mass:'sccscs'},
@@ -28,7 +28,7 @@ const rows = elements.map((element) => (
 ));
 
 
-export function Academics() {
+export function Achievements() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
   return (
@@ -56,34 +56,20 @@ export function Academics() {
 
       <AppShell.Main>
         <Grid>
-
-      <Grid.Col span={4}>
-      <NativeSelect variant="filled" size="lg" w="300px" radius="lg" mt="40px" label="Sem:" ml={20} data={['Sem', 'Angular', 'Vue']}/>       
+        <Grid.Col span={4}>
+      <NativeSelect variant="filled" size="lg" w="300px" radius="lg" label="Achivements:" ml={20} data={[]}/>       
       </Grid.Col>
 
       <Grid.Col span={4}>
-      <NativeSelect variant="filled" size="lg" w="300px" radius="lg" mt="40px" label="Branch:" ml={20} data={['Branch', 'Angular', 'Vue']}/>       
+      <NativeSelect variant="filled" size="lg" w="300px" radius="lg"  label="Achievement-type:" ml={20} data={['Branch', 'Angular', 'Vue']}/>       
       </Grid.Col>
-
-      <Grid.Col span={3}>
-      <NativeSelect variant="filled" size="lg" w="300px" radius="lg" mt="40px" label="Batch:" ml={20} data={['Batch', 'Angular', 'Vue']}/>       
-      </Grid.Col>
-
-      <Grid.Col span={4}>
-      <NativeSelect variant="filled" size="lg" w="300px" radius="lg" mt="20px" label="From:" ml={20} data={['From', 'Angular', 'Vue']}/>       
-      </Grid.Col>
-
-      <Grid.Col span={4}>
-      <NativeSelect variant="filled" size="lg" w="300px" radius="lg" mt="20px" label="To:" ml={20} data={['To', 'Angular', 'Vue']}/>       
-      </Grid.Col>
-
-      <Grid.Col span={3}>
-      <Button variant="filled" color="blue" size="lg" radius="lg"  ml={210} mt={100}>Export</Button>
-      </Grid.Col>
+    
     </Grid>
+    <Group justify="right">
+      <Button variant="filled" color="blue" size="lg" radius="lg"  mt={100}>Export</Button>
+      </Group>
     <Card className={classes.card} mt="lg">
-             <Table  horizontalSpacing="70px">
-      <Table.Thead>
+             <Table  horizontalSpacing="70px">      <Table.Thead>
         <Table.Tr >
           <Table.Th>Sem</Table.Th>
           <Table.Th>Batch</Table.Th>

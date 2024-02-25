@@ -6,7 +6,8 @@ import { Grid,} from '@mantine/core';
 import { Button,Title,Burger } from '@mantine/core';
 import { Table } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import classes from './staff.module.css';
+import classes from '../Student/student.module.css'
+import { StaffNavBar } from '@/components/staffnav/staffnav';
 
 
 export function FacultyLand() {
@@ -33,7 +34,7 @@ export function FacultyLand() {
 
       
       <AppShell.Navbar >
-        <NavBar/>
+      <StaffNavBar/>
       </AppShell.Navbar>
 
       <AppShell.Main>

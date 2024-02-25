@@ -1,12 +1,13 @@
 
 import { NavBar } from '@/components/stunav/Navbar';
-import { AppShell, Group} from '@mantine/core';
+import { AppShell, Card, Group} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Grid,} from '@mantine/core';
 import { Button,Title,Burger } from '@mantine/core';
 import { Table } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import classes from './staff.module.css';
+import classes from '../Student/student.module.css'
+import { StaffNavBar } from '@/components/staffnav/staffnav';
 const elements = [
     { position: 6, name: 'Carbon', mass:'bbhbs'},
     { position: 7,  name: 'Nitrogen',mass:'sccscs'},
@@ -16,12 +17,7 @@ const elements = [
     { position: 58,  name: 'Cerium',mass:'hbhehdb' },
     { position: 58,  name: 'Cerium',mass:'hbhehdb' },
     { position: 58,  name: 'Cerium',mass:'hbhehdb' },
-    { position: 58,  name: 'Cerium',mass:'hbhehdb' },
-    { position: 58,  name: 'Cerium',mass:'hbhehdb' },
-    { position: 58,  name: 'Cerium',mass:'hbhehdb' },
-    { position: 58,  name: 'Cerium',mass:'hbhehdb' },
-    { position: 58,  name: 'Cerium',mass:'hbhehdb' },
-    { position: 58,  name: 'Cerium',mass:'hbhehdb' },
+ 
   ];
 
 const rows = elements.map((element) => (
@@ -56,19 +52,17 @@ export function Staff() {
 
       
       <AppShell.Navbar >
-        <NavBar/>
+        <StaffNavBar/>
       </AppShell.Navbar>
 
       <AppShell.Main>
-            <Grid>
-            <Group mt={60} ml={1000}>
+            <Group justify="right" >
             <Link to="/staffadd">
             <Button variant="filled" color="blue" size="lg" radius="lg">+ Add Staff</Button>
             </Link>
             </Group>
-             </Grid>
-
-      <Table ml="5px" mt="100px" borderColor='white' withTableBorder withRowBorders={false}>
+<Card className={classes.card} mt="lg">
+             <Table  horizontalSpacing="70px">
       <Table.Thead>
         <Table.Tr >
           <Table.Th>Staff id</Table.Th>
@@ -78,6 +72,7 @@ export function Staff() {
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
     </Table>
+    </Card>
       </AppShell.Main>
     </AppShell>
   );

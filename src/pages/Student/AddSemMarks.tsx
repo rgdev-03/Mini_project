@@ -9,7 +9,7 @@ export function AddSemMarks() {
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
   const [inputs, setInputs] = useState([{ id: Math.random(), value1: '', value2: '', value3: '' }]);
   const addInputSet = () => {
-    setInputs([...inputs, { id: Math.random(), value1: '', value2: '', value3: '' }]);
+    setInputs([...inputs, { id: Math.random(), value1: '', value2: '', value3: '' ,}]);
   };
   const updateInput = (id, field, value) => {
     setInputs(inputs.map(input => input.id === id ? { ...input, [field]: value } : input));

@@ -59,3 +59,7 @@
     overflow: auto;
     padding: 20px;
   }
+  body{
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
