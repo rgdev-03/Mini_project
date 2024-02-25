@@ -16,9 +16,9 @@ export function Header() {
          <Link to="/"><UnstyledButton className={classes.control}>Home</UnstyledButton></Link>
           <Link to="/about"><UnstyledButton className={classes.control}>About Us</UnstyledButton></Link>
           <Link to="/login"><UnstyledButton className={classes.control}>Student</UnstyledButton></Link>
-
+<Link to="/facultylogin">
           <UnstyledButton className={classes.control}>Faculty</UnstyledButton>
-
+          </Link>
      
           <UnstyledButton className={classes.control}>HR</UnstyledButton>
 

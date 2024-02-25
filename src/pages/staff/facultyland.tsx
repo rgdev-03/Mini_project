@@ -1,6 +1,6 @@
 
 
-import { NavBar } from '@/components/stunav/Navbar';
+import { NavBar } from '@/components/staffnav/Navbar';
 
 import { AppShell, Group} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
