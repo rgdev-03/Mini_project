@@ -4,6 +4,8 @@ import {
 } from '@mantine/core';
 import { IconBrandGoogleFilled, IconBrandWindows, IconBrandFacebookFilled } from '@tabler/icons-react';
 import { Link ,Form} from 'react-router-dom';
+import classes from '../student/login.module.css'
+
 const LoginTab = () => (
   <Form action="/facultyland"style={{padding:"20px"}}>
   <TextInput

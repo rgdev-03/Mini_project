@@ -5,10 +5,10 @@ import { useDisclosure } from '@mantine/hooks';
 import { NativeSelect } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import {Breadcrumbs} from '@mantine/core';
-import { Textarea, Button} from '@mantine/core';
-import classes from '../Student/student.module.css'
+import { Textarea, Button} from '@mantine/core'
 import { YearPickerInput } from '@mantine/dates';
 import '@mantine/dates/styles.css';
+import classes from '../Student/student.module.css'
 
 import { useState } from 'react';
 
@@ -87,10 +87,14 @@ export function StudentsAdd() {
 
       <Grid.Col span={4}>
       <YearPickerInput
-      label="Pick date"
+      label="Student-B"
       placeholder="Pick date"
       value={value}
       onChange={setValue}
+      variant="filled"
+      size="md"
+      w="300px"
+      radius="lg"
     />
       </Grid.Col>
 
