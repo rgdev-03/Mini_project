@@ -1,13 +1,29 @@
 import { NavBar } from '@/components/stunav/Navbar';
-import { AppShell, Burger, Group, Skeleton, Title,Text, Box,Avatar,Card,Table, TableData, Button,Center,TextInput,Container} from '@mantine/core';
+import {
+  AppShell,
+  Burger,
+  Group,
+  Skeleton,
+  Title,
+  Text,
+  Box,
+  Avatar,
+  Card,
+  Table,
+  TableData,
+  Button,
+  Center,
+  TextInput,
+  Container,
+} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import classes from './student.module.css'
+import classes from './student.module.css';
 import { Form } from 'react-router-dom';
 
 export function AddProjects() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
- 
+
   return (
     <AppShell
       header={{ height: 60 }}
@@ -20,45 +36,33 @@ export function AddProjects() {
       bg="#2D3250"
     >
       <AppShell.Header className={classes.header}>
-        <Group h="100%" px="md"  >
+        <Group h="100%" px="md">
           <Burger opened={mobileOpened} onClick={toggleMobile} hiddenFrom="sm" size="sm" />
-            <Title order={4}>RYMEC PMS</Title>
+          <Title order={4}>RYMEC PMS</Title>
         </Group>
       </AppShell.Header>
-      <AppShell.Navbar style={{border:"none",backgroundColor:"#2D3250", width:"311px"}}>
-       <NavBar/>
+      <AppShell.Navbar style={{ border: 'none', backgroundColor: '#2D3250', width: '311px' }}>
+        <NavBar />
       </AppShell.Navbar>
       <AppShell.Main>
-      <Group justify="center" mt={100}>
-        <Card  w={500} className={classes.card}>
+        <Group justify="center" mt={100}>
+          <Card w={500} className={classes.card}>
+            <Title order={3} ta="center">
+              ADD PROJECTS
+            </Title>
 
-            <Title order={3} ta="center">ADD PROJECTS</Title>
+            <Form action="/stucertificates" style={{ padding: '20px' }}>
+              <TextInput label="Project-Name" required></TextInput>
+              <TextInput label="Project-Type" required mt="lg"></TextInput>
 
-            <Form action="/stucertificates"style={{padding:"20px"}}>
-                <TextInput
-                label='Project-Name'
-                required
-                >
-                </TextInput>
-                <TextInput
-                label='Project-Type'
-                required
-                mt="lg">
-                </TextInput>
-               
-                <TextInput
-                label='Git-Repo_Link'
-                required
-                type="text"
-                mt="lg">
-                </TextInput>
-                <Group justify="center">
-
-                <Button type="submit" justify="center" w="100%" mt="xl">ADD Projects</Button>
-
-                </Group>
+              <TextInput label="Git-Repo_Link" required type="text" mt="lg"></TextInput>
+              <Group justify="center">
+                <Button type="submit" justify="center" w="100%" mt="xl">
+                  ADD Projects
+                </Button>
+              </Group>
             </Form>
-        </Card>
+          </Card>
         </Group>
       </AppShell.Main>
     </AppShell>

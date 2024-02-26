@@ -3,7 +3,7 @@ import { MantineProvider } from '@mantine/core';
 import { Router } from './Router';
 import { theme } from './theme';
 
-import  './app.module.css';
+import './app.module.css';
 
 export default function App() {
   return (
