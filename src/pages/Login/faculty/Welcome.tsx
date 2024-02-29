@@ -46,28 +46,6 @@ const LoginTab = () => (
   </Form>
 );
 
-const SignupTab = () => (
-  <Form action="/facultyland" style={{ padding: '20px' }}>
-    <TextInput placeholder="User-Name" required></TextInput>
-    <TextInput placeholder="Branch" mt="lg" required></TextInput>
-    <TextInput placeholder="Password" type="password" required mt="lg"></TextInput>
-    <TextInput placeholder="confirm Password" type="password" required mt="lg"></TextInput>
-
-    <Group justify="center">
-      <Button
-        type="submit"
-        justify="center"
-        w="100%"
-        mt="xl"
-        bg="transparent"
-        color="white"
-        style={{ border: '2px solid #F8B179' }}
-      >
-        Signup
-      </Button>
-    </Group>
-  </Form>
-);
 
 export function StaffLogin() {
   const [showSuccess, setShowSuccess] = useState(false);
@@ -83,16 +61,12 @@ export function StaffLogin() {
             <Tabs.Tab value="gallery" className={classes.tab}>
               LOGIN
             </Tabs.Tab>
-            <Tabs.Tab value="messages" className={classes.tab}>
-              SIGNUP
-            </Tabs.Tab>
+           
           </Tabs.List>
           <Tabs.Panel value="gallery" className={classes.panel}>
             <LoginTab />
           </Tabs.Panel>
-          <Tabs.Panel value="messages" className={classes.panel}>
-            <SignupTab />
-          </Tabs.Panel>
+        
         </Tabs>
       </Grid.Col>
     </Grid>

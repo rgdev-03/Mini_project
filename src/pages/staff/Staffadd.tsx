@@ -61,6 +61,15 @@ export function Staffadd() {
               placeholder="Input placeholder"
             />{' '}
           </Grid.Col>
+          <Grid.Col span={4}>
+            <TextInput
+              variant="filled"
+              size="md"
+              radius="md"
+              label="Staff Name"
+              placeholder="Input placeholder"
+            />{' '}
+          </Grid.Col>
         </Grid>
         <Group justify="right" mt="lg">
           <Button variant="filled" color="blue" size="lg" radius="lg">

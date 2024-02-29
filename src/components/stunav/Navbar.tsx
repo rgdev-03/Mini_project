@@ -8,6 +8,7 @@ import {
   IconBrandGoogleAnalytics,
   IconSettings,
   IconFileCode2,
+  IconRegistered,
 } from '@tabler/icons-react';
 import classes from './NavBar.module.css';
 import { Link } from 'react-router-dom';
@@ -19,7 +20,7 @@ export function NavBar() {
         <Group className={classes.header} justify="space-between">
           <Link to="/stuland">
             <NavLink
-              label="Profile"
+              label="profile"
               leftSection={<IconUserCircle size="2rem" />}
               className={classes.link}
             />
@@ -40,14 +41,7 @@ export function NavBar() {
               className={classes.link}
             />
           </Link>
-          {/* <Link to="#">
-         <NavLink
-        href="#required-for-focus"
-        label="Settings"
-        leftSection={< IconSettings size="2rem"  />}
-        className={classes.link}
-        />
-        </Link> */}
+         
           <Link to="/stuprojects">
             <NavLink
               href="#required-for-focus"
@@ -56,6 +50,14 @@ export function NavBar() {
               className={classes.link}
             />
           </Link>
+           <Link to="/studentregister">
+         <NavLink
+        href="#required-for-focus"
+        label="Register"
+        leftSection={< IconRegistered size="2rem"  />}
+        className={classes.link}
+        />
+        </Link>
         </Group>
       </div>
     </nav>

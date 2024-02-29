@@ -7,6 +7,7 @@ import {
   IconCertificate,
   IconNotebook,
   IconBrandMinecraft,
+  IconUser,
 } from '@tabler/icons-react';
 import classes from '../stunav/Navbar.module.css';
 import { Link } from 'react-router-dom';
@@ -33,6 +34,9 @@ export function StaffNavBar() {
           </Link>
           <Link to="/academics">
             <NavLink leftSection={<IconNotebook />} label="Academics" className={classes.link} />
+          </Link>
+          <Link to="/admin">
+            <NavLink leftSection={<IconUser/>} label="Admin" className={classes.link} />
           </Link>
         </Group>
       </div>

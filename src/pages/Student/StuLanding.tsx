@@ -71,7 +71,6 @@ export function StudentLanding() {
             <Text>Email:raghuprem23@gmail.com</Text>
             <Text>Branch:CSE</Text>
           </Box>
-          <Avatar src="src\assets\profile.jpg" alt="it's me" size={150} />
         </Group>
         <Grid>
           <Grid.Col span={{ base: 12, md: 8, lg: 6 }}>
