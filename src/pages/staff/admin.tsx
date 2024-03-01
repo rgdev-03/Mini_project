@@ -36,10 +36,17 @@ export function Admin() {
       </AppShell.Navbar>
       <AppShell.Main>
         <Grid w="70rem" ml="md">
-
           <Grid.Col span={4}>
             <Link to="/addbatch">
-              <Card shadow="sm" padding="lg" radius="md" h="100px" mt="lg" className={classes.card} withBorder>
+              <Card
+                shadow="sm"
+                padding="lg"
+                radius="md"
+                h="100px"
+                mt="lg"
+                className={classes.card}
+                withBorder
+              >
                 <text>Add Batch</text>
               </Card>
             </Link>
@@ -47,15 +54,34 @@ export function Admin() {
 
           <Grid.Col span={4}>
             <Link to="/addbranch">
-              <Card shadow="sm" padding="xl" radius="md" h="100px" mt="lg" className={classes.card} withBorder>
+              <Card
+                shadow="sm"
+                padding="xl"
+                radius="md"
+                h="100px"
+                mt="lg"
+                className={classes.card}
+                withBorder
+              >
                 <text>Add Branch</text>
               </Card>
             </Link>
           </Grid.Col>
-
-         
-       
-
+          <Grid.Col span={4}>
+            <Link to="/staffadd">
+              <Card
+                shadow="sm"
+                padding="xl"
+                radius="md"
+                h="100px"
+                mt="lg"
+                className={classes.card}
+                withBorder
+              >
+                <text>Add Staff</text>
+              </Card>
+            </Link>
+          </Grid.Col>
         </Grid>
       </AppShell.Main>
     </AppShell>
