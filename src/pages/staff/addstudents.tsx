@@ -29,6 +29,8 @@ export function StudentRegister() {
   const [studob, setStuDob] = useState([]);
   const [stugender, setStuGender] = useState([]);
   const [stumobile, setStuMobile] = useState([]);
+  const [stuemail, setStuEmail] = useState([]);
+
 
   const [branches, setBranches] = useState('');
   const [batches, setBatches] = useState('');
@@ -76,6 +78,7 @@ export function StudentRegister() {
         dob: studob,
         gender: stugender,
         mobile: stumobile,
+        email:stuemail,
       };
 
       console.log('Data being sent:', stuData);
@@ -89,7 +92,7 @@ export function StudentRegister() {
       });
 
       if (response.ok) {
-        setRedirectUrl('/studentregister');
+        setRedirectUrl('/students');
         setShowSuccess(true);
         console.log('Student added successfully');
       } else {
@@ -131,7 +134,7 @@ export function StudentRegister() {
         </Group>
       </AppShell.Header>
       <AppShell.Navbar>
-        <NavBar />
+        <StaffNavBar   />
       </AppShell.Navbar>
       <AppShell.Main>
         <Text>
@@ -306,6 +309,17 @@ export function StudentRegister() {
                 placeholder="Enter the Student_mob"
                 value={stumobile}
                 onChange={(event) => setStuMobile(event.target.value)}
+              />
+            </Grid.Col>
+            <Grid.Col span={4}>
+              <TextInput
+                variant="filled"
+                size="md"
+                radius="lg"
+                label="Student Email:"
+                placeholder="Enter the Email"
+                value={stuemail}
+                onChange={(event) => setStuEmail(event.target.value)}
               />
             </Grid.Col>
           </Grid>

@@ -67,6 +67,8 @@ export function Staffadd() {
         setShowSuccess(true);
         console.log('staff added successfully');
       } else {
+        const errorMessage = await response.text(); // Extract error message from response
+        throw new Error(errorMessage);
         console.error('Failed to add staff:', response.status, response.statusText);
       }
     } catch (error) {

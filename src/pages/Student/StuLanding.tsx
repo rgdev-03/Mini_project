@@ -15,6 +15,15 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './student.module.css';
+import { getJwtPayload, getUserIdFromJwt } from '@/utils/fetchUser';
+import { useEffect, useState } from 'react';
+// import jwt from 'jsonwebtoken'; // Import jsonwebtoken library
+
+
+
+
+
+
 const academics: TableData = {
   head: ['SEMESTER', 'SGPA'],
   body: [
@@ -43,6 +52,37 @@ export function StudentLanding() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
+  const userId = getUserIdFromJwt();
+
+  const [stdData, setStdData] = useState();
+
+
+  // console.log(userId);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Construct the API URL with selected filter options
+        const apiUrl = `http://127.0.0.1:8000/api/stduser/?user=${userId}`;
+        const response = await fetch(apiUrl);
+
+
+        
+        const data = await response.json();
+        setStdData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [userId]); 
+
+  console.log("StudentData",stdData);
+
+  const studentData = stdData;
+
+ 
+
   return (
     <AppShell
       header={{ height: 60 }}
@@ -66,10 +106,10 @@ export function StudentLanding() {
       <AppShell.Main c="white">
         <Group justify="space-between">
           <Box className={classes.box}>
-            <Text>Name:Raghupremachar</Text>
-            <Text>USN:3VC21CS137</Text>
-            <Text>Email:raghuprem23@gmail.com</Text>
-            <Text>Branch:CSE</Text>
+            <Text>Name:     {studentData && studentData[0].name}</Text>
+            <Text>USN:      {studentData && studentData[0].USN}</Text>
+            <Text>Email:    {studentData && studentData[0].email}</Text>
+            <Text>Branch:   {studentData && studentData[0].branch}</Text>
           </Box>
         </Group>
         <Grid>

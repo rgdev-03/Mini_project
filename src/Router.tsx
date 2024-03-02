@@ -14,11 +14,11 @@ import { Academics } from './pages/staff/Academics';
 import { FacultyLand } from './pages/staff/facultyland';
 import { StaffLogin } from './pages/Login/faculty/Welcome';
 import { Achievements } from './pages/staff/Acheviments';
-import { Students } from './pages/staff/students';
+import { Students } from './pages/staff/studentlist';
 import { Admin } from './pages/staff/admin';
 import { AddBatch } from './pages/staff/addBatch';
 import { AddBranch } from './pages/staff/addBranch';
-import { StudentRegister } from './pages/Student/Register';
+import { StudentRegister } from './pages/staff/addstudents';
 
 const router = createBrowserRouter([
   {
@@ -84,7 +84,7 @@ const router = createBrowserRouter([
     element: <Achievements/>,
   },
   {
-    path: '/studentregister',
+    path: '/addstudents',
     element: <StudentRegister/>,
   },
   {

@@ -82,6 +82,21 @@ export function Admin() {
               </Card>
             </Link>
           </Grid.Col>
+          <Grid.Col span={4}>
+            <Link to="/addstudents">
+              <Card
+                shadow="sm"
+                padding="xl"
+                radius="md"
+                h="100px"
+                mt="lg"
+                className={classes.card}
+                withBorder
+              >
+                <text>Add student</text>
+              </Card>
+            </Link>
+          </Grid.Col>
         </Grid>
       </AppShell.Main>
     </AppShell>

@@ -50,14 +50,14 @@ export function NavBar() {
               className={classes.link}
             />
           </Link>
-           <Link to="/studentregister">
+           {/* <Link to="/studentregister">
          <NavLink
         href="#required-for-focus"
         label="Register"
         leftSection={< IconRegistered size="2rem"  />}
         className={classes.link}
         />
-        </Link>
+        </Link> */}
         </Group>
       </div>
     </nav>
