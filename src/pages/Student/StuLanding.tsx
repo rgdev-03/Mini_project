@@ -17,6 +17,7 @@ import { useDisclosure } from '@mantine/hooks';
 import classes from './student.module.css';
 import { getJwtPayload, getUserIdFromJwt } from '@/utils/fetchUser';
 import { useEffect, useState } from 'react';
+import { getStdID } from '@/utils/fetchStdID';
 // import jwt from 'jsonwebtoken'; // Import jsonwebtoken library
 
 
@@ -55,6 +56,7 @@ export function StudentLanding() {
   const userId = getUserIdFromJwt();
 
   const [stdData, setStdData] = useState();
+  const [academicData, setAcademicData] = useState([]);
 
 
   // console.log(userId);
@@ -81,7 +83,63 @@ export function StudentLanding() {
 
   const studentData = stdData;
 
- 
+  const stdId = getStdID();
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const apiUrl = `http://127.0.0.1:8000/api/stdacd/?std_id=${stdId}`;
+
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        setAcademicData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [stdId]);
+
+  const rows = Array.isArray(academicData) ? academicData.map((element) => (
+    <Table.Tr key={element.id}>
+      <Table.Td>{element.acad_sem}</Table.Td>
+      <Table.Td>{element.acad_sgpa}</Table.Td>   
+    </Table.Tr>
+  )): null;
+
+
+  // Certificates
+  const [certData, setCertData] = useState([]);
+
+  // console.log(stdId);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const apiUrl = `http://127.0.0.1:8000/api/stdcert/?std_id=${stdId}`;
+
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        setCertData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [stdId]); 
+
+  const cert = Array.isArray(certData) ? certData.map((element) => (
+    <Table.Tr key={element.std_id}>
+      <Table.Td>{element.certification_name}</Table.Td>
+      <Table.Td>{element.org}</Table.Td>
+      <Table.Td>{element.certi_e_date}</Table.Td>
+    </Table.Tr>
+  )) : null;
+
+
 
   return (
     <AppShell
@@ -120,7 +178,16 @@ export function StudentLanding() {
                 Academics
               </Title>
               <Table.ScrollContainer minWidth={200} p="lg">
-                <Table data={academics} p="100px" />
+                <Table >
+                    <Table.Thead>
+                      <Table.Tr>
+                        <Table.Th ta="center">Semester</Table.Th>
+                        <Table.Th ta="center">SGPA</Table.Th>
+                      
+                      </Table.Tr>
+                  </Table.Thead>
+                  <Table.Tbody ta="center">{rows}</Table.Tbody>
+                </Table>
               </Table.ScrollContainer>
             </Card>
           </Grid.Col>
@@ -130,7 +197,16 @@ export function StudentLanding() {
                 Acheviments
               </Title>
               <Table.ScrollContainer minWidth={200} p="lg">
-                <Table data={acheviments} p="100px" />
+                <Table  p="100px" >
+                <Table.Thead>
+            <Table.Tr>
+              <Table.Th>Certificate Name</Table.Th>
+              <Table.Th>Organization Name</Table.Th>
+              <Table.Th>Issued Date</Table.Th>
+            </Table.Tr>
+          </Table.Thead>
+          <Table.Tbody>{cert}</Table.Tbody>
+                </Table>
               </Table.ScrollContainer>
             </Card>
           </Grid.Col>

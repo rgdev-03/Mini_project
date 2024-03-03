@@ -22,6 +22,7 @@ import classes from './student.module.css';
 import { Form, Link } from 'react-router-dom';
 import { IconDownload } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
+import { getStdID } from '@/utils/fetchStdID';
 
 export function StuAcademics() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -32,19 +33,20 @@ export function StuAcademics() {
 
   const [academic_sem, setAcademicSem] = useState([]);
   const [academic_sgpa, setAcademicSgpa] = useState([]);
-  const [sslcper, setSslcPer] = useState([]);
-  const [pucper, setPucPer] = useState([]);
+
 
   const [academicData, setAcademicData] = useState([]);
 
+  const stdId = getStdID();
+  console.log(stdId);
 
   const handleAddAcademics = async () => {
     try {
       const academicData = {
+        std_id:stdId,
         acad_sem: academic_sem,
         acad_sgpa: academic_sgpa,
-        sem10th: sslcper,
-        sem12th_diploma: pucper,
+     
       };
 
       console.log('Data being sent:', academicData);
@@ -73,10 +75,14 @@ export function StuAcademics() {
     }
   };
 
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/academic_per/');
+        const apiUrl = `http://127.0.0.1:8000/api/stdacd/?std_id=${stdId}`;
+
+        const response = await fetch(apiUrl);
         const data = await response.json();
         setAcademicData(data);
       } catch (error) {
@@ -85,16 +91,15 @@ export function StuAcademics() {
     };
 
     fetchData();
-  }, []);
+  }, [stdId]);
 
-  const rows = academicData.map((element) => (
+  const rows = Array.isArray(academicData) ? academicData.map((element) => (
     <Table.Tr key={element.id}>
-      <Table.Td>{element.academic_sem}</Table.Td>
-      <Table.Td>{element.academic_sgpa}</Table.Td>
-      <Table.Td>{element.sslcper}</Table.Td>
-      <Table.Td>{element.pucper}</Table.Td>
+      <Table.Td>{element.acad_sem}</Table.Td>
+      <Table.Td>{element.acad_sgpa}</Table.Td>   
     </Table.Tr>
-  ));
+  )): null;
+
 
   const handleModalClose = () => {
     setShowSuccess(false);
@@ -147,22 +152,7 @@ export function StuAcademics() {
                   onChange={(event) => setAcademicSgpa(event.target.value)}
                 />
               </Grid.Col>
-              <Grid.Col span={4}>
-                <TextInput
-                  placeholder="Enter the 10th Percentage"
-                  m="lg"
-                  value={sslcper}
-                  onChange={(event) => setSslcPer(event.target.value)}
-                />
-              </Grid.Col>
-              <Grid.Col span={4}>
-                <TextInput
-                  placeholder="Enter the 12th percentage"
-                  m="lg"
-                  value={pucper}
-                  onChange={(event) => setPucPer(event.target.value)}
-                />
-              </Grid.Col>
+      
             </Grid>
 
             <Group justify="center" mt="md">
@@ -182,11 +172,10 @@ export function StuAcademics() {
             <Table.Tr>
               <Table.Th ta="center">Semester</Table.Th>
               <Table.Th ta="center">SGPA</Table.Th>
-              <Table.Th ta="center">10th Percentage</Table.Th>
-              <Table.Th ta="center">12th Percentage</Table.Th>
+             
             </Table.Tr>
           </Table.Thead>
-          <Table.Tbody ta="center"></Table.Tbody>
+          <Table.Tbody ta="center">{rows}</Table.Tbody>
         </Table>
 
         <Modal title="Success" opened={showSuccess} onClose={handleModalClose} withCloseButton>

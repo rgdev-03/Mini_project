@@ -15,14 +15,80 @@ import {
   Center,
   TextInput,
   Container,
+  Modal,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './student.module.css';
 import { Form } from 'react-router-dom';
+import { useState } from 'react';
+import { getStdID } from '@/utils/fetchStdID';
 
 export function AddProjects() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+
+  const stdId = getStdID();
+  console.log(stdId);
+  
+
+  const [projName, setProjName] = useState('');
+
+  const [projType, setProjType] = useState('');
+  // const [cert_img, setCertImg] = useState('');
+  const [projUrl, setProjUrl] = useState('');
+
+
+
+
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [redirectUrl, setRedirectUrl] = useState('');
+
+  const handleAddProject = async () => {
+    try {
+      const proData = {
+        std_id: stdId,
+        project_name:projName,
+        project_type:projType,
+        // image_upload:cert_img,
+        project_repo_url:projUrl,
+      };
+  
+      console.log('Data being sent:', proData);
+
+      const response = await fetch('http://localhost:8000/api/projects/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(proData),
+        
+      });
+  
+      if (response.ok) {
+        setRedirectUrl('/stuprojects');
+        setShowSuccess(true);
+        // console.log('Batch added successfully');
+      } else {
+        console.error('Failed to add Batch:', response.status, response.statusText);
+      }
+  
+    } catch (error) {
+      console.error('Error:', error);
+  
+      if (error instanceof Error) {
+        console.error('Error message:', error.message);
+      }
+    }
+  };
+  
+
+  const handleModalClose = () => {
+    setShowSuccess(false);
+
+    if (redirectUrl) {
+      window.location.href = redirectUrl;
+    }
+  };
 
   return (
     <AppShell
@@ -51,19 +117,35 @@ export function AddProjects() {
               ADD PROJECTS
             </Title>
 
-            <Form action="/stucertificates" style={{ padding: '20px' }}>
-              <TextInput label="Project-Name" required></TextInput>
-              <TextInput label="Project-Type" required mt="lg"></TextInput>
+              <TextInput label="Project-Name" 
+              value={projName}
+              onChange={(event) => setProjName(event.target.value)}
+              required></TextInput>
+              <TextInput label="Project-Type"
+              value={projType}
+              onChange={(event) => setProjType(event.target.value)}
+              required mt="lg"></TextInput>
 
-              <TextInput label="Git-Repo_Link" required type="text" mt="lg"></TextInput>
+              <TextInput label="Git-Repo_Link" 
+              value={projUrl}
+              onChange={(event) => setProjUrl(event.target.value)}
+              required type="text" mt="lg"></TextInput>
               <Group justify="center">
-                <Button type="submit" justify="center" w="100%" mt="xl">
+                <Button type="submit" justify="center" w="100%" mt="xl" onClick={handleAddProject}>
                   ADD Projects
                 </Button>
               </Group>
-            </Form>
           </Card>
         </Group>
+
+        <Modal
+          title="Success"
+          opened={showSuccess}
+          onClose={handleModalClose}
+          withCloseButton
+          >
+          Data added successfully!
+        </Modal>
       </AppShell.Main>
     </AppShell>
   );

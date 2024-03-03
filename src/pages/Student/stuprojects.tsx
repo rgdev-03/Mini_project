@@ -17,6 +17,8 @@ import { useDisclosure } from '@mantine/hooks';
 import classes from './student.module.css';
 import { Link } from 'react-router-dom';
 import { IconDownload } from '@tabler/icons-react';
+import { useEffect, useState } from 'react';
+import { getStdID } from '@/utils/fetchStdID';
 const elements = [
   {
     ProjectName: 'PMS',
@@ -57,13 +59,37 @@ const elements = [
 export function StuProjects() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
-  const rows = elements.map((element) => (
-    <Table.Tr key={element.ProjectName}>
-      <Table.Td>{element.ProjectName}</Table.Td>
-      <Table.Td>{element.ProjectType}</Table.Td>
-      <Table.Td>{element.GitRepo}</Table.Td>
+
+
+  const [projData, setprojData] = useState([]);
+
+  const stdId = getStdID();
+  console.log(stdId);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const apiUrl = `http://127.0.0.1:8000/api/stdproj/?std_id=${stdId}`;
+
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        setprojData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [stdId]); 
+
+  const rows = Array.isArray(projData) ? projData.map((element) => (
+    <Table.Tr key={element.std_id}>
+      <Table.Td>{element.project_name}</Table.Td>
+      <Table.Td>{element.project_type}</Table.Td>
+      <Table.Td>{element.project_repo_url}</Table.Td>
     </Table.Tr>
-  ));
+  )) : null;
+
   return (
     <AppShell
       header={{ height: 60 }}
