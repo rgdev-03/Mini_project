@@ -1,10 +1,6 @@
-import { NavBar } from '@/components/stunav/Navbar';
 import { AppShell, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { Grid } from '@mantine/core';
-import { Button, Title, Burger } from '@mantine/core';
-import { Table } from '@mantine/core';
-import { Link } from 'react-router-dom';
+import { Title, Burger } from '@mantine/core';
 import classes from '../Student/student.module.css';
 import { StaffNavBar } from '@/components/staffnav/staffnav';
 
