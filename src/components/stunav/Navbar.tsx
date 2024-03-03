@@ -60,6 +60,13 @@ export function NavBar() {
         </Link> */}
         </Group>
       </div>
+
+      <div className={classes.footer}>
+        <Link to="/" className={classes.link} >
+          <IconLogout className={classes.linkIcon} stroke={1.5} />
+          <span>Logout</span>
+        </Link>
+      </div>
     </nav>
   );
 }

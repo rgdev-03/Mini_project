@@ -21,7 +21,7 @@ box-shadow:0 4px 7px -2px inset  rgb(0, 0, 0,0.8);
 .footer {
   padding-top: var(--mantine-spacing-md);
   margin-top: var(--mantine-spacing-md);
-  border-top: rem(1px) solid var(--mantine-color-blue-7);
+  border-top: 2px solid #ffff;
 }
 
 .version {

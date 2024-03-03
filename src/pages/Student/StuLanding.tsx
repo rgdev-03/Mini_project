@@ -20,11 +20,6 @@ import { useEffect, useState } from 'react';
 import { getStdID } from '@/utils/fetchStdID';
 // import jwt from 'jsonwebtoken'; // Import jsonwebtoken library
 
-
-
-
-
-
 const academics: TableData = {
   head: ['SEMESTER', 'SGPA'],
   body: [
@@ -39,6 +34,7 @@ const academics: TableData = {
     [1, 8.9],
   ],
 };
+
 const acheviments: TableData = {
   head: ['Certificate-Name', 'Organization', 'Issued-date'],
   body: [
@@ -162,6 +158,11 @@ export function StudentLanding() {
         <NavBar />
       </AppShell.Navbar>
       <AppShell.Main c="white">
+        <Group justify="center">
+          <Title order={2}>
+            Hello Name
+          </Title>
+        </Group>
         <Group justify="space-between">
           <Box className={classes.box}>
             <Text>Name:     {studentData && studentData[0].name}</Text>
@@ -172,7 +173,6 @@ export function StudentLanding() {
         </Group>
         <Grid>
           <Grid.Col span={{ base: 12, md: 8, lg: 6 }}>
-            {' '}
             <Card className={classes.card}>
               <Title order={3} ta="center" mb="md">
                 Academics

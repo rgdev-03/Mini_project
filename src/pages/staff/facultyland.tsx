@@ -34,7 +34,13 @@ export function FacultyLand() {
         <StaffNavBar />
       </AppShell.Navbar>
 
-      <AppShell.Main></AppShell.Main>
+      <AppShell.Main>
+      <Group justify="center" mt={250} >
+        <Title fz="100" c="#ffff">
+          Hello Name
+        </Title>
+      </Group>
+      </AppShell.Main>
     </AppShell>
   );
 }
