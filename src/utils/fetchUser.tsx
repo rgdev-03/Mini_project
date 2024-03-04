@@ -21,3 +21,11 @@ export const getUserIdFromJwt = () => {
   return userId;
 
 };
+
+
+export const logout = () => {
+  localStorage.removeItem('json-web-token');
+  window.location.href = '/';
+
+
+};

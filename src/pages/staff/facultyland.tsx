@@ -3,10 +3,15 @@ import { useDisclosure } from '@mantine/hooks';
 import { Title, Burger } from '@mantine/core';
 import classes from '../Student/student.module.css';
 import { StaffNavBar } from '@/components/staffnav/staffnav';
+import { getFacID, getFacName } from '@/utils/fietchFacID';
 
 export function FacultyLand() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+
+
+  const faculty = getFacName();
+  // console.log(faculty);
 
   return (
     <AppShell
@@ -32,8 +37,8 @@ export function FacultyLand() {
 
       <AppShell.Main>
       <Group justify="center" mt={250} >
-        <Title fz="100" c="#ffff">
-          Hello Name
+        <Title fz="50" c="#ffff">
+          Hello {faculty}!!!
         </Title>
       </Group>
       </AppShell.Main>
