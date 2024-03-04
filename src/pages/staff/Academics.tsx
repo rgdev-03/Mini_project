@@ -5,31 +5,41 @@ import { NativeSelect, Card } from '@mantine/core';
 import { Button, Table, Group, Burger, Title } from '@mantine/core';
 import { StaffNavBar } from '@/components/staffnav/staffnav';
 import classes from '../Student/student.module.css';
-const elements = [
-  { position: 6, name: 'Carbon', mass: 'bbhbs' },
-  { position: 7, name: 'Nitrogen', mass: 'sccscs' },
-  { position: 39, name: 'Yatrium', mass: 'bbjbjd' },
-  { position: 56, name: 'Barium', mass: 'gyggdwd' },
-  { position: 58, name: 'Cerium', mass: 'hbhehdb' },
-  { position: 58, name: 'Cerium', mass: 'hbhehdb' },
-  { position: 58, name: 'Cerium', mass: 'hbhehdb' },
-  { position: 58, name: 'Cerium', mass: 'hbhehdb' },
-  { position: 58, name: 'Cerium', mass: 'hbhehdb' },
-  { position: 58, name: 'Cerium', mass: 'hbhehdb' },
-  { position: 58, name: 'Cerium', mass: 'hbhehdb' },
-];
+import { useEffect, useState } from 'react';
 
-const rows = elements.map((element) => (
-  <Table.Tr key={element.name}>
-    <Table.Td>{element.position}</Table.Td>
-    <Table.Td>{element.name}</Table.Td>
-    <Table.Td>{element.mass}</Table.Td>
-  </Table.Tr>
-));
 
 export function Academics() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+
+  const [academicData, setAcademicData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const apiUrl = `http://127.0.0.1:8000/api/stdacd/`;
+
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        setAcademicData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const rows = Array.isArray(academicData) ? academicData.map((element) => (
+    <Table.Tr key={element.id}>
+      <Table.Td>{element.std_id}</Table.Td>
+
+      <Table.Td>{element.acad_sem}</Table.Td>
+      <Table.Td>{element.acad_sgpa}</Table.Td>   
+    </Table.Tr>
+  )): null;
+
+
   return (
     <AppShell
       header={{ height: 60 }}
@@ -129,9 +139,9 @@ export function Academics() {
           <Table horizontalSpacing="70px">
             <Table.Thead>
               <Table.Tr>
-                <Table.Th>Sem</Table.Th>
-                <Table.Th>Batch</Table.Th>
-                <Table.Th>Branch</Table.Th>
+                <Table.Th>Student</Table.Th>
+                <Table.Th>SEN</Table.Th>
+                <Table.Th>SGPA</Table.Th>
               </Table.Tr>
             </Table.Thead>
             <Table.Tbody>{rows}</Table.Tbody>

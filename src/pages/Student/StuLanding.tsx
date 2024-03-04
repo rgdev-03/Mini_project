@@ -160,7 +160,7 @@ export function StudentLanding() {
       <AppShell.Main c="white">
         <Group justify="center">
           <Title order={2}>
-            Hello Name
+            Hello {studentData && studentData[0].name}
           </Title>
         </Group>
         <Group justify="space-between">
