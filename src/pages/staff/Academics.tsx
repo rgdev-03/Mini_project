@@ -6,6 +6,7 @@ import { Button, Table, Group, Burger, Title } from '@mantine/core';
 import { StaffNavBar } from '@/components/staffnav/staffnav';
 import classes from '../Student/student.module.css';
 import { useEffect, useState } from 'react';
+import * as XLSX from 'xlsx';
 
 
 export function Academics() {
@@ -13,6 +14,26 @@ export function Academics() {
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
   const [academicData, setAcademicData] = useState([]);
+  const [selectedSem, setSelectedSem] = useState('');
+  const [students, setStudents] = useState('');
+
+
+
+  useEffect(() => {
+    // Fetch the list of areas from the specified endpoint
+    const fetchStudent = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/student/');
+        const data = await response.json();
+        setStudents(data);
+      } catch (error) {
+        console.error('Error fetching Batches:', error);
+      }
+    };
+
+    fetchStudent();
+  }, []); 
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,14 +51,44 @@ export function Academics() {
     fetchData();
   }, []);
 
-  const rows = Array.isArray(academicData) ? academicData.map((element) => (
+  const exportToExcel = () => {
+    // Transform academicData to include student names instead of std_id
+    const dataWithNames = academicData.map(item => {
+      const studentName = students.find(student => student.std_id === item.std_id)?.name || 'Unknown';
+      return {
+        ...item,
+        stdName: studentName, // Add a new property for the student's name
+        std_id: undefined // This will remove std_id property from the output
+      };
+    });
+  
+    // Remove undefined properties from the objects
+    const cleanData = dataWithNames.map(item => {
+      const obj = { ...item };
+      Object.keys(obj).forEach(key => obj[key] === undefined && delete obj[key]);
+      return obj;
+    });
+  
+    const ws = XLSX.utils.json_to_sheet(cleanData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Academics Data');
+    XLSX.writeFile(wb, 'academics_data.xlsx');
+  };
+  
+  
+
+  const rows = Array.isArray(academicData) ? academicData.map((element) => {
+    const stdName =
+    students.find((std) => std.std_id === element.std_id)?.name || '';
+    return(
     <Table.Tr key={element.id}>
-      <Table.Td>{element.std_id}</Table.Td>
+      <Table.Td>{stdName}</Table.Td>
 
       <Table.Td>{element.acad_sem}</Table.Td>
       <Table.Td>{element.acad_sgpa}</Table.Td>   
     </Table.Tr>
-  )): null;
+    );
+}): null;
 
 
   return (
@@ -64,18 +115,33 @@ export function Academics() {
 
       <AppShell.Main>
         <Grid>
-          <Grid.Col span={4}>
-            <NativeSelect
-              variant="filled"
-              size="lg"
-              w="300px"
-              radius="lg"
-              mt="40px"
-              label="Sem:"
-              ml={20}
-              data={['Sem', 'Angular', 'Vue']}
-            />
-          </Grid.Col>
+          {/* <Grid.Col span={4}>
+              <NativeSelect
+                variant="filled"
+                size="lg"
+                w="300px"
+                radius="lg"
+                mt="40px"
+                label="Sem:"
+                ml={20}
+                value={selectedSem}
+                onChange={(event) => {
+                  const selectedValue = event.target.value;
+                  console.log('Selected Student Sem:', selectedValue);
+                  setSelectedSem(selectedValue);
+                }}
+                data={[
+                  { label: 'Select Sem', value: '' },
+                  { label: '1', value: '1' },
+                  { label: '2', value: '2' },
+                  { label: '3', value: '3' },
+                  { label: '4', value: '4' },
+                  { label: '5', value: '5' },
+                  { label: '6', value: '6' },
+                  { label: '7', value: '7' },
+                  { label: '8', value: '8' },
+                ]}            />
+            </Grid.Col>
 
           <Grid.Col span={4}>
             <NativeSelect
@@ -88,59 +154,27 @@ export function Academics() {
               ml={20}
               data={['Branch', 'Angular', 'Vue']}
             />
-          </Grid.Col>
-
-          <Grid.Col span={3}>
-            <NativeSelect
-              variant="filled"
-              size="lg"
-              w="300px"
-              radius="lg"
-              mt="40px"
-              label="Batch:"
-              ml={20}
-              data={['Batch', 'Angular', 'Vue']}
-            />
-          </Grid.Col>
-
-          <Grid.Col span={4}>
-            <NativeSelect
-              variant="filled"
-              size="lg"
-              w="300px"
-              radius="lg"
-              mt="20px"
-              label="From:"
-              ml={20}
-              data={['From', 'Angular', 'Vue']}
-            />
-          </Grid.Col>
-
-          <Grid.Col span={4}>
-            <NativeSelect
-              variant="filled"
-              size="lg"
-              w="300px"
-              radius="lg"
-              mt="20px"
-              label="To:"
-              ml={20}
-              data={['To', 'Angular', 'Vue']}
-            />
-          </Grid.Col>
-
-          <Grid.Col span={3}>
-            <Button variant="filled" color="blue" size="lg" radius="lg" ml={210} mt={100}>
-              Export
-            </Button>
-          </Grid.Col>
+          </Grid.Col>        */}
+         
+          
         </Grid>
+        <Group justify="right">
+          <Button
+            mt="xl"
+            bg="transparent"
+            style={{ border: '2px solid #F8B179' }}
+            onClick={exportToExcel}
+            mt="sm"
+          >
+            Export
+          </Button>
+        </Group>
         <Card className={classes.card} mt="lg">
           <Table horizontalSpacing="70px">
             <Table.Thead>
               <Table.Tr>
                 <Table.Th>Student</Table.Th>
-                <Table.Th>SEN</Table.Th>
+                <Table.Th>SEM</Table.Th>
                 <Table.Th>SGPA</Table.Th>
               </Table.Tr>
             </Table.Thead>

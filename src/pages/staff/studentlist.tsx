@@ -7,18 +7,7 @@ import { Table } from '@mantine/core';
 import classes from '../Student/student.module.css';
 import { StaffNavBar } from '@/components/staffnav/staffnav';
 import { useEffect, useState } from 'react';
-const elements = [
-
-];
-
-const rows = elements.map((element) => (
-  <Table.Tr key={element.name}>
-    <Table.Td>{element.studentName}</Table.Td>
-    <Table.Td>{element.position}</Table.Td>
-    <Table.Td>{element.name}</Table.Td>
-    <Table.Td>{element.mass}</Table.Td>
-  </Table.Tr>
-));
+import * as XLSX from 'xlsx';
 
 export function Students() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -63,10 +52,17 @@ export function Students() {
     fetchBatches();
   }, []);
 
+  const exportToExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(studData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Staff Data');
+    XLSX.writeFile(wb, 'student_data.xlsx');
+  };
+
   const fetchData = async () => {
     try {
       // Construct the API URL with selected filter options
-      const apiUrl = `http://localhost:8000/api/std2data/?batch=${selectedBatch}&branch=${selectedBranch}&sem=${selectedSem}`;
+      const apiUrl = `http://localhost:8000/api/stddata/?batch=${selectedBatch}&branch=${selectedBranch}&sem=${selectedSem}`;
       const response = await fetch(apiUrl);
       const data = await response.json();
       setStudData(data);
@@ -79,15 +75,12 @@ export function Students() {
     fetchData();
   }, [selectedBatch, selectedSem, selectedBranch]); // Update data when filter options change
 
-
   const rows = studData.map((element) => {
     // Find the branch name corresponding to the branch ID
-    const branchName =
-      branches.find((branch) => branch.branch === element.id)?.branch_name || '';
+    const branchName = branches.find((branch) => branch.branch === element.id)?.branch_name || '';
 
-      // Find the branch name corresponding to the branch ID
-    const batchName =
-    batches.find((batch) => batch.batch === element.id)?.batch_code || '';
+    // Find the branch name corresponding to the branch ID
+    const batchName = batches.find((batch) => batch.batch === element.id)?.batch_code || '';
 
     return (
       <Table.Tr key={element.std_id}>
@@ -95,11 +88,9 @@ export function Students() {
         <Table.Td>{element.sem}</Table.Td>
         <Table.Td>{batchName}</Table.Td>
         <Table.Td>{branchName}</Table.Td> {/* Display branch name instead of ID */}
-        
       </Table.Tr>
     );
   });
-
 
   return (
     <AppShell
@@ -150,7 +141,8 @@ export function Students() {
                 { label: '6', value: '6' },
                 { label: '7', value: '7' },
                 { label: '8', value: '8' },
-              ]}            />
+              ]}
+            />
           </Grid.Col>
 
           <Grid.Col span={4}>
@@ -172,8 +164,8 @@ export function Students() {
                 { label: 'Select the Batch', value: null }, // Initial option
                 ...(batches &&
                   batches.map((s) => ({ label: `${s.batch_code}`, value: `${s.id}` }))),
-              ]}            
-              />
+              ]}
+            />
           </Grid.Col>
 
           <Grid.Col span={3}>
@@ -195,7 +187,8 @@ export function Students() {
                 { label: 'Select the Branch', value: null }, // Initial option
                 ...(branches &&
                   branches.map((s) => ({ label: `${s.branch_name}`, value: `${s.id}` }))),
-              ]}            />
+              ]}
+            />
           </Grid.Col>
 
           {/* <Grid.Col span={3}>
@@ -204,6 +197,17 @@ export function Students() {
             </Button>
           </Grid.Col> */}
         </Grid>
+        <Group justify="right">
+          <Button
+            mt="xl"
+            bg="transparent"
+            style={{ border: '2px solid #F8B179' }}
+            onClick={exportToExcel}
+            mt="sm"
+          >
+            Export
+          </Button>
+        </Group>
 
         <Card className={classes.card} mt="lg">
           <Table horizontalSpacing="70px">
