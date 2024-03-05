@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { NavBar } from '@/components/stunav/Navbar';
-import { AppShell, Card, Group } from '@mantine/core';
+import { AppShell, Card, Group, Table, Title, Burger, Button } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { Grid } from '@mantine/core';
-import { Button, Title, Burger } from '@mantine/core';
-import { Table } from '@mantine/core';
-import { Link } from 'react-router-dom';
-import classes from '../Student/student.module.css';
 import { StaffNavBar } from '@/components/staffnav/staffnav';
+import classes from '../Student/student.module.css';
+import * as XLSX from 'xlsx';
 
 export function Staff() {
   const [staffdata, setStaffData] = useState([]);
@@ -25,6 +21,13 @@ export function Staff() {
 
     fetchData();
   }, []);
+
+  const exportToExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(staffdata);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Staff Data');
+    XLSX.writeFile(wb, 'staff_data.xlsx');
+  };
 
   const rows = staffdata.map((element) => (
     <Table.Tr key={element.staff_id}>
@@ -62,15 +65,26 @@ export function Staff() {
       </AppShell.Navbar>
 
       <AppShell.Main>
+        <Group justify='right'>
+        <Button
+         mt="xl"
+         bg="transparent"
+         style={{ border: '2px solid #F8B179' }}
+          onClick={exportToExcel}
+          mt="sm"
+        >
+          Export
+        </Button>
+        </Group>
         <Card className={classes.card} mt="lg">
           <Table horizontalSpacing="70px">
             <Table.Thead>
               <Table.Tr>
                 <Table.Th>Staff name</Table.Th>
                 <Table.Th>Branch</Table.Th>
-                <Table.Th>mobile</Table.Th>
-                <Table.Th>staff_type</Table.Th>
-                <Table.Th>email</Table.Th>
+                <Table.Th>Mobile</Table.Th>
+                <Table.Th>Staff type</Table.Th>
+                <Table.Th>Email</Table.Th>
               </Table.Tr>
             </Table.Thead>
             <Table.Tbody>{rows}</Table.Tbody>
