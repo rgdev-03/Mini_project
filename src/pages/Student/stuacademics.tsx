@@ -22,7 +22,7 @@ import classes from './student.module.css';
 import { Form, Link } from 'react-router-dom';
 import { IconDownload } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
-import { getStdID } from '@/utils/fetchStdID';
+import { getStdID, getStdbatch, getStdbranch } from '@/utils/fetchStdID';
 
 export function StuAcademics() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -40,12 +40,24 @@ export function StuAcademics() {
   const stdId = getStdID();
   console.log(stdId);
 
+  const stdBranch = getStdbranch();
+
+  const stdBatch = getStdbatch();
+
+
+
+
+
   const handleAddAcademics = async () => {
     try {
       const academicData = {
         std_id:stdId,
         acad_sem: academic_sem,
         acad_sgpa: academic_sgpa,
+        branch:stdBranch,
+        batch:stdBatch,
+        
+        
      
       };
 

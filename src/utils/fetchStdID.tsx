@@ -35,3 +35,73 @@ export const getStdID = () => {
     return studentData && studentData[0].std_id; 
     
 };
+
+export const getStdbranch = () => {
+
+    const userId = getUserIdFromJwt();
+
+    const [stdData, setStdData] = useState();
+
+
+  // console.log(userId);
+    useEffect(() => {
+        const fetchData = async () => {
+        try {
+            // Construct the API URL with selected filter options
+            const apiUrl = `http://127.0.0.1:8000/api/stduser/?user=${userId}`;
+            const response = await fetch(apiUrl);
+
+
+            
+            const data = await response.json();
+            setStdData(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+        };
+
+        fetchData();
+    }, [userId]); 
+
+    // console.log("StudentData",stdData);
+
+    const studentData = stdData;
+
+    return studentData && studentData[0].branch; 
+    
+};
+
+export const getStdbatch = () => {
+
+    const userId = getUserIdFromJwt();
+
+    const [stdData, setStdData] = useState();
+
+
+  // console.log(userId);
+    useEffect(() => {
+        const fetchData = async () => {
+        try {
+            // Construct the API URL with selected filter options
+            const apiUrl = `http://127.0.0.1:8000/api/stduser/?user=${userId}`;
+            const response = await fetch(apiUrl);
+
+
+            
+            const data = await response.json();
+            setStdData(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+        };
+
+        fetchData();
+    }, [userId]); 
+
+    // console.log("StudentData",stdData);
+
+    const studentData = stdData;
+
+    return studentData && studentData[0].batch; 
+    
+};

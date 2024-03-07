@@ -53,11 +53,24 @@ export function Students() {
   }, []);
 
   const exportToExcel = () => {
-    const ws = XLSX.utils.json_to_sheet(studData);
+    // Transform studData to include batch and branch names
+    const dataWithNames = studData.map(item => {
+      const batchName = batches.find(batch => batch.id === item.batch)?.batch_code || 'Unknown Batch';
+      const branchName = branches.find(branch => branch.id === item.branch)?.branch_name || 'Unknown Branch';
+  
+      return {
+        ...item,
+        batch: batchName, // Replace batch ID with batch name
+        branch: branchName, // Replace branch ID with branch name
+      };
+    });
+  
+    const ws = XLSX.utils.json_to_sheet(dataWithNames);
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Staff Data');
+    XLSX.utils.book_append_sheet(wb, ws, 'Student Data');
     XLSX.writeFile(wb, 'student_data.xlsx');
   };
+  
 
   const fetchData = async () => {
     try {

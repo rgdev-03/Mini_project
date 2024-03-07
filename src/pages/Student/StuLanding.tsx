@@ -53,6 +53,23 @@ export function StudentLanding() {
 
   const [stdData, setStdData] = useState();
   const [academicData, setAcademicData] = useState([]);
+  const [branches, setBranches] = useState('');
+
+  useEffect(() => {
+    // Fetch the list of areas from the specified endpoint
+    const fetchBranches = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/branch/');
+        const data = await response.json();
+        setBranches(data);
+      } catch (error) {
+        console.error('Error fetching Department Data:', error);
+      }
+    };
+
+    fetchBranches();
+  }, []);
+
 
 
   // console.log(userId);
@@ -79,7 +96,11 @@ export function StudentLanding() {
 
   const studentData = stdData;
 
+
+
   const stdId = getStdID();
+
+
 
 
   useEffect(() => {
@@ -108,6 +129,7 @@ export function StudentLanding() {
 
   // Certificates
   const [certData, setCertData] = useState([]);
+
 
   // console.log(stdId);
 

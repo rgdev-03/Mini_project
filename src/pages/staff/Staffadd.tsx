@@ -42,6 +42,8 @@ export function Staffadd() {
     fetchBranches();
   }, []);
 
+  
+
   const handleAddStaff = async () => {
     try {
       const staffData = {

@@ -37,6 +37,8 @@ export function AddCertificates() {
   // const [cert_img, setCertImg] = useState('');
   const [org_name, setOrgName] = useState('');
 
+  const [spec, setSpec] = useState('');
+
 
 
 
@@ -51,6 +53,7 @@ export function AddCertificates() {
         certi_e_date:cert_date,
         // image_upload:cert_img,
         org:org_name,
+        specification:spec,
       };
   
       console.log('Data being sent:', certData);
@@ -123,10 +126,13 @@ export function AddCertificates() {
               <TextInput label="Organization-Name" required mt="lg"
               value={org_name}
               onChange={(event) => setOrgName(event.target.value)}/>
+              <TextInput label="Specification" required mt="lg"
+              value={spec}
+              onChange={(event) => setSpec(event.target.value)}/>
               <TextInput label="Issued-Date" required type="date" mt="lg"
               value={cert_date}
               onChange={(event) => setCertDate(event.target.value)}/>
-              <TextInput label="Add File" type="file" mt="lg"/>
+              {/* <TextInput label="Add File" type="file" mt="lg"/> */}
               <Group justify="center">
                 <Button type="submit" justify="center" w="100%" mt="xl" onClick={handleAddCertficate}>
                   ADD CERTIFICATES

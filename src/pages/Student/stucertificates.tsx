@@ -57,6 +57,8 @@ export function StudentCertificates() {
       <Table.Td>{element.certification_name}</Table.Td>
       <Table.Td>{element.org}</Table.Td>
       <Table.Td>{element.certi_e_date}</Table.Td>
+      <Table.Td>{element.specification}</Table.Td>
+
     </Table.Tr>
   )) : null;
 
@@ -107,7 +109,7 @@ export function StudentCertificates() {
               <Table.Th>Certificate Name</Table.Th>
               <Table.Th>Organization Name</Table.Th>
               <Table.Th>Issued Date</Table.Th>
-              <Table.Th>Download </Table.Th>
+              <Table.Th>Specification </Table.Th>
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>{rows}</Table.Tbody>

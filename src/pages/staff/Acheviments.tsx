@@ -38,6 +38,8 @@ export function Achievements() {
   const [certData, setCertData] = useState([]);
 
   const [students, setStudents] = useState('');
+  const [spec, setSpec] = useState('');
+
 
   useEffect(() => {
     // Fetch the list of areas from the specified endpoint
@@ -57,7 +59,7 @@ export function Achievements() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiUrl = `http://127.0.0.1:8000/api/stdcert/`;
+        const apiUrl = `http://localhost:8000/api/stdcertspec/?specification=${spec}`;
 
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -68,7 +70,7 @@ export function Achievements() {
     };
 
     fetchData();
-  }, []);
+  }, [spec]);
 
   const exportToExcel = () => {
     // Transform academicData to include student names instead of std_id
@@ -105,6 +107,8 @@ export function Achievements() {
             <Table.Td>{element.certification_name}</Table.Td>
             <Table.Td>{element.org}</Table.Td>
             <Table.Td>{element.certi_e_date}</Table.Td>
+
+            <Table.Td>{element.specification}</Table.Td>
           </Table.Tr>
         );
       })
@@ -133,35 +137,23 @@ export function Achievements() {
 
       <AppShell.Main>
         <Grid>
-          {/* <Grid.Col span={4}>
-            <NativeSelect
+        <Grid.Col span={4}>
+            <TextInput
               variant="filled"
               size="lg"
               w="300px"
               radius="lg"
-              label="Achivements:"
+              mt="40px"
+              label="Specification:"
               ml={20}
-              data={[]}
+              value={spec}
+              onChange={(event) => setSpec(event.target.value)}
+
+              
             />
           </Grid.Col>
-
-          <Grid.Col span={4}>
-            <NativeSelect
-              variant="filled"
-              size="lg"
-              w="300px"
-              radius="lg"
-              label="Achievement-type:"
-              ml={20}
-              data={['Branch', 'Angular', 'Vue']}
-            />
-          </Grid.Col> */}
+    
         </Grid>
-        {/* <Group justify="right">
-          <Button variant="filled" color="blue" size="lg" radius="lg" mt={100}>
-            Export
-          </Button>
-        </Group> */}
         <Group justify="right">
           <Button
             mt="xl"
@@ -183,6 +175,8 @@ export function Achievements() {
                 <Table.Th>Certificate</Table.Th>
                 <Table.Th>Organization</Table.Th>
                 <Table.Th>Issued Date</Table.Th>
+
+                <Table.Th>Specification</Table.Th>
               </Table.Tr>
             </Table.Thead>
             <Table.Tbody>{rows}</Table.Tbody>
